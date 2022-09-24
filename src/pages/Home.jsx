@@ -57,7 +57,7 @@ const Home = () => {
   // }, [category]);
 
   return (
-    <Helmet title="Home">
+    <>
       <section className="Fondo-banner">
         <Container>
           <Row>
@@ -79,7 +79,7 @@ const Home = () => {
       <section className="pt-0">
         <Productos />
       </section>
-    </Helmet>
+    </>
   );
 };
 
