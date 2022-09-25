@@ -78,7 +78,7 @@ const DetalleProducto = () => {
                   Price: <span>${price}</span>
                 </p>
                 <p className="category mb-5">
-                  Category: <span>{category}</span>
+                  <p>{desc}</p>
                 </p>
 
                 <button onClick={addItem} className="addTOCart__btn">
