@@ -1,5 +1,6 @@
 import React, {useRef, useEffect} from 'react';
-import {NavLink} from 'reactstrap';
+import {NavLink, Container} from 'reactstrap';
+// import {NavLink, Link} from 'react-router-dom';
 import logo from '../../assets/images/isologo.png';
 
 // import {useSelector, useDispatch} from 'react-redux';
@@ -15,9 +16,9 @@ const Header = () => {
   useEffect(() => {
     window.addEventListener('scroll', () => {
       if (document.body.scrollTop > 80 || document.documentElement.scrollTop > 80) {
-        headerRef.current.classList.add('header__shrink');
+        headerRef.current.classList.add('header__scroll');
       } else {
-        headerRef.current.classList.remove('header__shrink');
+        headerRef.current.classList.remove('header__scroll');
       }
     });
 
@@ -35,35 +36,53 @@ const Header = () => {
       display: 'Carrito',
       path: '/cart',
     },
-    {
-      display: 'Login',
-      path: '/login',
-    },
   ];
 
   return (
-    <div className="header">
-      <div className="contenendor-navegacion d-flex align-items-center justify-content-between">
-        {/*------ Logo ------ */}
-        <div className="logo">
-          <img src={logo} alt="logo" />
-        </div>
-        {/*------ NavBar ------ */}
-        <div className="navigation">
-          <div className="menu d-flex align-items-center gap-5">
-            {nav_menu.map((item, index) => (
-              <NavLink
-                to={item.path}
-                key={index}
-                className={navClass => (navClass.isActive ? 'active__menu' : '')}
-              >
-                {item.display}
-              </NavLink>
-            ))}
+    <header className="header" ref={headerRef}>
+      <Container>
+        <div className="nav__wrapper d-flex align-items-center justify-content-between">
+          <div className="logo">
+            {/* <Link to="/home"> */}
+            <img src={logo} alt="logo" />
+            {/* </Link> */}
+          </div>
+
+          {/* ======= menu ======= */}
+          <div className="navigation" ref={menuRef}>
+            <div className="menu d-flex align-items-center gap-5">
+              {nav_menu.map((item, index) => (
+                <NavLink
+                  to={item.path}
+                  key={index}
+                  className={navClass => (navClass.isActive ? 'active__menu' : '')}
+                >
+                  {item.display}
+                </NavLink>
+              ))}
+            </div>
+          </div>
+
+          {/* ======== nav right icons ========= */}
+          <div className="nav__right d-flex align-items-center gap-4">
+            <span className="cart__icon">
+              <i class="ri-shopping-cart-line"></i>
+              <span className="cart__badge">0</span>
+            </span>
+
+            <span className="user">
+              {/* <Link to="/login"> */}
+              <i class="ri-user-6-line"></i>
+              {/* </Link> */}
+            </span>
+
+            <span className="mobile__menu">
+              <i class="ri-menu-line"></i>
+            </span>
           </div>
         </div>
-      </div>
-    </div>
+      </Container>
+    </header>
   );
 };
 
