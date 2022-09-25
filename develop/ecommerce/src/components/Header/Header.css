@@ -16,13 +16,11 @@
   box-shadow: 5px 5px 15px -10px #fcd202;
 }
 
-.logo {
-  text-align: center;
-}
 .logo img {
-  width: calc(100% - 80%);
+  width: calc(100% - 70%);
   object-fit: contain;
   margin-top: 5%;
+  margin-bottom: 15%;
 }
 
 .logo h5 {
@@ -81,7 +79,7 @@
   display: none;
 }
 
-.header__shrink {
+.header__scroll {
   position: sticky;
   top: 0;
   left: 0;
@@ -93,7 +91,9 @@
 
 @media only screen and (max-width: 992px) {
   .logo img {
-    width: calc(100% - 70%);
+    width: calc(100% - 80%);
+    padding-top: 30%;
+    margin-bottom: 0%;
   }
   .logo h5 {
     font-size: 0.8rem;
