@@ -1,6 +1,7 @@
 import React, {useEffect} from 'react';
 import Header from '../Header/Header.jsx';
 import Footer from '../Footer/Footer.jsx';
+import Products from '../../pages/Products';
 
 import Home from '../../pages/Home.jsx';
 import db from '../../firebase/firebaseConfig';
@@ -21,7 +22,7 @@ const Layout = () => {
       <Header />
       <Home></Home>
       <p>FIREBASE TESTs</p>
-      {/* <Slider /> */}
+      <Products />
       <Footer />
     </div>
   );
