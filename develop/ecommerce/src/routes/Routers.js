@@ -1,5 +1,8 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import {Routes, Route, Navigate} from 'react-router-dom';
+
+import RutasPublicas from './RutasPublicas';
+import RutasPrivadas from './RutasPrivadas';
 
 import Home from '../pages/Home';
 import Products from '../pages/Products';
