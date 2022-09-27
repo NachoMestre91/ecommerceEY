@@ -22,11 +22,19 @@
 .product__content h5 {
   margin-bottom: 30px;
 }
-
+.product_description h5 {
+  color: #21242d;
+  font-size: 0.8rem;
+}
 .product__price {
   font-weight: 600;
   font-size: 1.2rem;
   color: #fcd202;
+}
+
+.product_stock {
+  display: flex;
+  justify-content: space-between;
 }
 
 .addTOCart__btn {

@@ -8,7 +8,7 @@ import ProductCard from '../components/UI/ProductCard/ProductCard';
 
 const Products = () => {
   /* ------ HARCODEO PRODUCTOS ------ */
-  const products = [
+  const product = [
     {
       id: '1',
       title: 'Angular Basico',
@@ -36,7 +36,7 @@ const Products = () => {
 
   /* ------ Accion de filtrado del search ------ */
 
-  const searchedProduct = products.filter(item => {
+  const searchedProduct = product.filter(item => {
     if (searchTerm.value === '') {
       return item;
     }
@@ -86,11 +86,11 @@ const Products = () => {
               </div>
             </Col>
 
-            {/* {displayPage.map(item => (
+            {displayPage.map(item => (
               <Col lg="3" md="4" sm="6" xs="6" key={item.id} className="mb-4">
                 <ProductCard item={item} />
               </Col>
-            ))} */}
+            ))}
 
             <div>
               <ReactPaginate

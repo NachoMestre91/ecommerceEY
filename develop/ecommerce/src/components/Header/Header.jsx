@@ -1,5 +1,6 @@
 import React, {useRef, useEffect} from 'react';
 import {NavLink, Container} from 'reactstrap';
+import {useSelector, useDispatch} from 'react-redux';
 // import {NavLink, Link} from 'react-router-dom';
 import logo from '../../assets/images/isologo.png';
 
@@ -10,6 +11,12 @@ import './Header.css';
 const Header = () => {
   const menuRef = useRef(null);
   const headerRef = useRef(null);
+  // const dispatch = useDispatch();
+
+  const toggleMenu = () => menuRef.current.classList.toggle('show__menu');
+  // const toggleCart = () => {
+  //   dispatch(toggle());
+  // };
 
   /* ------ Scroll Fixed Menu ------ */
 
@@ -49,7 +56,7 @@ const Header = () => {
           </div>
 
           {/* ======= menu ======= */}
-          <div className="navigation" ref={menuRef}>
+          <div className="navigation" ref={menuRef} onClick={toggleMenu}>
             <div className="menu d-flex align-items-center gap-5">
               {nav_menu.map((item, index) => (
                 <NavLink
