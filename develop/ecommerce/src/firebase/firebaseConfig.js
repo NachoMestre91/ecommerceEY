@@ -1,18 +1,15 @@
-// Import the functions you need from the SDKs you need
+import {initializeApp} from 'firebase/app';
+import {getFirestore} from '@firebase/firestore';
 
-// import {initializeApp} from 'firebase/app';
-
-export const firebaseConfig = {
-  // apiKey: 'AIzaSyDiGPQqzS4oCN75ojPquD43K1Zh8LVJVto',
-  // authDomain: 'ecommerce-ey.firebaseapp.com',
-  // projectId: 'ecommerce-ey',
-  // storageBucket: 'ecommerce-ey.appspot.com',
-  // messagingSenderId: '711964670543',
-  // appId: '1:711964670543:web:6734cce96540ba7d66883a',
-  apiKey: process.env.REACT_APP_FIREBASE_APIKEY,
-  authDomain: process.env.REACT_APP_FIREBASE_AUTHDOMAIN,
-  projectId: process.env.REACT_APP_FIREBASE_PROJECTID,
-  storageBucket: process.env.REACT_APP_FIREBASE_STORAGEBUCKET,
-  messagingSenderId: process.env.REACT_APP_FIREBASE_MESSAGINGSENDERID,
-  appId: process.env.REACT_APP_FIREBASE_APPID,
+const firebaseConfig = {
+  apiKey: process.env.REACT_APP_API_KEY_FIREBASE,
+  authDomain: process.env.REACT_APP_AUTH_DOMAIN_FIREBASE,
+  projectId: process.env.REACT_APP_PROJECT_ID_FIREBASE,
+  storageBucket: process.env.REACT_APP_STORAGE_BUCKET_FIREBASE,
+  messagingSenderId: process.env.REACT_APP_MESSAGING_SENDER_ID_KEY_FIREBASE,
+  appId: process.env.REACT_APP_APP_ID_FIREBASE,
 };
+
+const app = initializeApp(firebaseConfig);
+
+export const db = getFirestore(app);
