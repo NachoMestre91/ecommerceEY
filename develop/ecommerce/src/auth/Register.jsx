@@ -1,36 +1,9 @@
-import React, {useState} from 'react';
+import React from 'react';
+import {useForm} from '../hooks/useForms';
 
 export const Register = () => {
-  //   const [name, setName] = useState('');
-  //   const [email, setEmail] = useState('');
-  //   const [phone, setPhone] = useState('');
-
   const initialValues = {name: '', email: '', phone: ''};
-  const [form, setForm] = useState(initialValues);
-  const handleForm = ({target}) => {
-    //console.log(e.target.value);
-    const {name, value} = target;
-    setForm({...form, [name]: value});
-  };
-  console.log(form);
-
-  //   const handleName = ({target}) => {
-  //     setName(target.value);
-  //   };
-  //   const handleEmail = e => {
-  //     setEmail(e.target.value);
-  //   };
-
-  const handleReset = () => {
-    setForm(initialValues);
-  };
-
-  const handleSubmit = e => {
-    e.preventDefault();
-
-    //console.log(name, email);
-    handleReset();
-  };
+  const {handleSubmit, email, name, phone, handleForm} = useForm(initialValues);
 
   return (
     <div>
@@ -38,30 +11,37 @@ export const Register = () => {
         <input
           type="text"
           name="name"
-          value={form.name}
-          //   onChange={handleName}
-          //onChange={e => setName(e.target.value)}
+          value={name}
           onChange={handleForm}
           placeholder="Ingrese nombre..."
         />
         <input
           type="email"
           name="email"
-          value={form.email}
-          //   onChange={handleEmail}
+          value={email}
           onChange={handleForm}
           placeholder="Ingrese email..."
         />
         <input
           type="number"
           name="phone"
-          value={form.phone}
-          //   onChange={handleEmail}
+          value={phone}
           onChange={handleForm}
           placeholder="Ingrese el telefono..."
         />
-        <input type="submit" value="enviar" />
+        <input type="submit" value="crear usuario" />
       </form>
     </div>
   );
 };
+
+//   const [name, setName] = useState('');
+//   const [email, setEmail] = useState('');
+//   const [phone, setPhone] = useState('');
+
+//   const handleName = ({target}) => {
+//     setName(target.value);
+//   };
+//   const handleEmail = e => {
+//     setEmail(e.target.value);
+//   };
