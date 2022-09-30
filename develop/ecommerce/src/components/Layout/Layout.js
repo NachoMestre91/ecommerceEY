@@ -6,6 +6,7 @@ import Cart from '../../pages/Cart';
 import Carts from '../../components/UI/Cart/Carts.jsx';
 import ProductCard from '../../components/UI/ProductCard/ProductCard.jsx';
 import Products from '../../pages/Products';
+import {Register} from '../../auth/Register.jsx';
 
 // import db from '../../firebase/firebaseConfig';
 // import {collection, getDocs, getFirestore} from 'firebase/firestore';
@@ -29,6 +30,7 @@ const Layout = () => {
       </div>
       <Cart />
       <Products />
+      <Register />
       {/* <Carts /> */}
       <Footer />
     </div>

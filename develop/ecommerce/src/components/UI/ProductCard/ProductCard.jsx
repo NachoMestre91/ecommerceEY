@@ -2,9 +2,7 @@ import React from 'react';
 import './ProductCard.css';
 import {Link} from 'react-router-dom';
 
-export const ProductCard = props => {
-  const {id, title, image, price, shortDescription, stock} = props.item;
-
+export const ProductCard = ({id, title, image, price, shortDescription, stock}) => {
   return (
     <>
       <div className="product__item">
