@@ -13,23 +13,47 @@ import {db} from '../../firebase/firebaseConfig.js';
 // import Slider from '../UI/Slider/Slider';
 
 const Layout = () => {
-  const [productos, setProductos] = useState([]);
-  const usersCollectionRef = collection(db, 'productos');
+  const [Users, setUsers] = useState([]);
+  const usersCollectionRef = collection(db, 'usuarios');
 
   useEffect(() => {
-    const getProductos = async () => {
+    const getUsuarios = async () => {
       const data = await getDocs(usersCollectionRef);
       console.log(data);
-      setProductos(data.docs.map(doc => ({...doc.data(), id: doc.id})));
+      setUsers(data.docs.map(doc => ({...doc.data(), id: doc.id})));
     };
 
-    getProductos();
+    getUsuarios();
   }, []);
+
+  // const [productos, setProductos] = useState([]);
+  // const usersCollectionRef = collection(db, 'productos');
+
+  // useEffect(() => {
+  //   const getProductos = async () => {
+  //     const data = await getDocs(usersCollectionRef);
+  //     console.log(data);
+  //     setProductos(data.docs.map(doc => ({...doc.data(), id: doc.id})));
+  //   };
+
+  //   getProductos();
+  // }, []);
 
   return (
     <div>
       <Header />
-      {productos.map(products => {
+      {Users.map(user => {
+        return (
+          <div>
+            {' '}
+            <p>ID: {user.id}</p>
+            <p>usuario: {user.email}</p>
+            <p>password: {user.password}</p>
+          </div>
+        );
+      })}
+
+      {/* {productos.map(products => {
         return (
           <div>
             {' '}
@@ -42,7 +66,7 @@ const Layout = () => {
             <p>stock: {products.stock}</p>
           </div>
         );
-      })}
+      })} */}
 
       <div>
         <Routers />

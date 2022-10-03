@@ -15,7 +15,9 @@ const Checkout = () => {
   const [postalCode, setPostalCode] = useState('');
 
   const shippingInfo = [];
+
   const cartTotalAmount = useSelector(state => state.cart.totalAmount);
+
   const shippingCost = 30;
 
   const totalAmount = cartTotalAmount;

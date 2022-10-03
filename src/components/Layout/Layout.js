@@ -12,16 +12,16 @@ const Layout = () => {
 
   const usersCollectionRef = collection(db, 'productos');
 
-  useEffect(() => {
-    const getProductos = async () => {
-      const data = await getDocs(usersCollectionRef);
-      console.log(data);
+  // useEffect(() => {
+  //   const getProductos = async () => {
+  //     const data = await getDocs(usersCollectionRef);
+  //     console.log(data);
 
-      setProductos(data.docs.map(doc => ({...doc.data(), id: doc.id})));
-    };
+  //     setProductos(data.docs.map(doc => ({...doc.data(), id: doc.id})));
+  //   };
 
-    getProductos();
-  }, []);
+  //   getProductos();
+  // }, []);
 
   useEffect(() => {
     const getProductos = async () => {
@@ -40,11 +40,13 @@ const Layout = () => {
   return (
     <div>
       <Header />
-      {productos.map(product => {
-        console.log(product);
-        return <h1 style={{color: 'black'}}>titulo: {product.titulo}</h1>;
-      })}
-      <p style={{color: 'black'}}> Respuesta firabase</p>
+      <>
+        <p style={{color: 'black'}}> Respuesta firebase</p>
+        {productos.map(product => {
+          console.log(product);
+          return <h1 style={{color: 'black'}}>titulo: {product.titulo}</h1>;
+        })}
+      </>
       {showCart && <Carts />}
       <div>
         <Routes />
