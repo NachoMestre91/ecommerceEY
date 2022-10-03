@@ -1,17 +1,32 @@
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
 import {Container, Row, Col} from 'reactstrap';
 import ReactPaginate from 'react-paginate';
 import '../assets/css/pagination.css';
 import '../assets/css/Products.css';
 import Curso1 from '../assets/images/curso1.jpg';
 import ProductCard from '../components/UI/ProductCard/ProductCard';
+import {collection, getDocs, addDoc, updateDoc, deleteDoc, doc} from 'firebase/firestore';
+import {db} from '../firebase/firebaseConfig.js';
 
 const Products = () => {
+  const [productos, setProductos] = useState([]);
+  const usersCollectionRef = collection(db, 'productos');
+
+  useEffect(() => {
+    const getProductos = async () => {
+      const data = await getDocs(usersCollectionRef);
+      console.log(data);
+      setProductos(data.docs.map(doc => ({...doc.data(), id: doc.id})));
+    };
+
+    getProductos();
+  }, []);
+
   /* ------ HARCODEO PRODUCTOS ------ */
   const product = [
     {
       id: '1',
-      title: 'Angular Basico',
+      title: 'Angular Basicos',
       price: 24.0,
       image: Curso1,
       largeDesciption: 'descripcion larga',
@@ -62,6 +77,20 @@ const Products = () => {
 
   return (
     <div>
+      {productos.map(products => {
+        return (
+          <div>
+            {' '}
+            <p>ID: {products.id}</p>
+            <p>titulo: {products.title}</p>
+            <p>imagen: {products.image}</p>
+            <p>descripcion larga: {products.largeDescription}</p>
+            <p>Precio: {products.price}</p>
+            <p>Descripcion corta: {products.shortDescription}</p>
+            <p>stock: {products.stock}</p>
+          </div>
+        );
+      })}
       <section>
         <Container>
           <Row>
