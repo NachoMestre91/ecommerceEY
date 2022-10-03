@@ -44,7 +44,11 @@ const Layout = () => {
         <p style={{color: 'black'}}> Respuesta firebase</p>
         {productos.map(product => {
           console.log(product);
-          return <h1 style={{color: 'black'}}>titulo: {product.titulo}</h1>;
+          return (
+            <h1 key={product.id} style={{color: 'black'}}>
+              titulo: {product.titulo}
+            </h1>
+          );
         })}
       </>
       {showCart && <Carts />}

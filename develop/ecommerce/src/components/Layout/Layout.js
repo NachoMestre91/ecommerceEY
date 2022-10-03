@@ -41,16 +41,15 @@ const Layout = () => {
   return (
     <div>
       <Header />
-      {Users.map(user => {
+      {/* {Users.map(user => {
         return (
-          <div>
-            {' '}
+          <>
             <p>ID: {user.id}</p>
             <p>usuario: {user.email}</p>
             <p>password: {user.password}</p>
-          </div>
+          </>
         );
-      })}
+      })} */}
 
       {/* {productos.map(products => {
         return (

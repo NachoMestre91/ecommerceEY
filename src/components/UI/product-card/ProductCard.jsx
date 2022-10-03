@@ -39,11 +39,11 @@ const ProductCard = props => {
         <br></br>
         <div className=" d-flex align-items-center justify-content-between ">
           <Link className="addTOCart__btn" to={`/detalleproducto/${id}`}>
-            <i class="ri-eye-line mr-1"></i>
+            <i className="ri-eye-line mr-1"></i>
             Detalle
           </Link>
           <button className="addTOCart__btn" onClick={addToCart}>
-            <i class="ri-bank-card-line ml-1"></i>
+            <i className="ri-bank-card-line ml-1"></i>
             Comprar
           </button>
         </div>
