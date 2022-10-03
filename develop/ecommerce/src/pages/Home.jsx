@@ -2,6 +2,7 @@ import React from 'react';
 import {Container, Row, Col, ListGroup, ListGroupItem} from 'reactstrap';
 import bannerImg from '../assets/images/banner-02.gif';
 import '../assets/css/Home.css';
+import Slider from '../components/UI/Slider/Slider';
 
 const Home = () => {
   return (
@@ -14,7 +15,7 @@ const Home = () => {
             </p>
 
             <div className="contenedor-banner">
-              <img src={bannerImg} alt="hero-img" className="w-100" />
+              <Slider />
             </div>
           </Col>
 

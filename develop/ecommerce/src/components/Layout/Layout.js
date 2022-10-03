@@ -10,7 +10,6 @@ import Home from '../../pages/Home';
 import {collection, getDocs, addDoc, updateDoc, deleteDoc, doc} from 'firebase/firestore';
 import {db} from '../../firebase/firebaseConfig.js';
 // import {collection, getDocs, getFirestore} from 'firebase/firestore';
-// import Slider from '../UI/Slider/Slider';
 
 const Layout = () => {
   const [Users, setUsers] = useState([]);

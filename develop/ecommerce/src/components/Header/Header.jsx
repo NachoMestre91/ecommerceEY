@@ -1,11 +1,10 @@
 import React, {useRef, useEffect} from 'react';
-import {NavLink, Container} from 'reactstrap';
-import {useSelector, useDispatch} from 'react-redux';
-// import {NavLink, Link} from 'react-router-dom';
+import {Container} from 'reactstrap';
+import {NavLink, Link} from 'react-router-dom';
 import logo from '../../assets/images/isologo.png';
+import {useSelector, useDispatch} from 'react-redux';
+import {checkoutActions} from '../../store/slices/checkoutSlice.js';
 
-// import {useSelector, useDispatch} from 'react-redux';
-// import {cartUiActions} from '../../store/shopping-cart/cartUiSlice';
 import './Header.css';
 
 const Header = () => {
@@ -13,10 +12,12 @@ const Header = () => {
   const headerRef = useRef(null);
   // const dispatch = useDispatch();
 
-  const toggleMenu = () => menuRef.current.classList.toggle('show__menu');
+  // const toggleMenu = () => menuRef.current.classList.toggle('show__menu');
   // const toggleCart = () => {
-  //   dispatch(toggle());
+  //   dispatch(checkoutActions.toggle());
   // };
+
+  // const totalQuantity = useSelector(state => state.cart.totalQuantity);
 
   /* ------ Scroll Fixed Menu ------ */
 
@@ -56,7 +57,7 @@ const Header = () => {
           </div>
 
           {/* ======= menu ======= */}
-          <div className="navigation" ref={menuRef} onClick={toggleMenu}>
+          <div className="navigation" ref={menuRef}>
             <div className="menu d-flex align-items-center gap-5">
               {nav_menu.map((item, index) => (
                 <NavLink

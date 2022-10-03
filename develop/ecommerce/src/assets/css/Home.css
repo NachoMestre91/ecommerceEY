@@ -120,8 +120,7 @@
 
   .contenedor-banner {
     width: 100%;
-    height: 200px;
-    background-color: red;
+    height: auto;
   }
 
   .food__category {
