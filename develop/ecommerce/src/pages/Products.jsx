@@ -43,7 +43,7 @@ const Products = () => {
     if (item.title.toLowerCase().includes(searchTerm.toLowerCase())) {
       return item;
     } else {
-      return console.log('no se encontro');
+      // return alert('no se encontro');
     }
   });
 
@@ -81,7 +81,7 @@ const Products = () => {
             <Col lg="6" md="6" sm="6" xs="12" className="mb-5">
               <div className="sorting__widget text-end">
                 <select className="w-50">
-                  <option>Categorias</option>
+                  <option>Stock</option>
                 </select>
               </div>
             </Col>
