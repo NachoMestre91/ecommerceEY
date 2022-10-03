@@ -3,31 +3,31 @@ import {Container, Row, Col} from 'reactstrap';
 import ReactPaginate from 'react-paginate';
 import '../assets/css/pagination.css';
 import '../assets/css/Products.css';
-import Curso1 from '../assets/images/curso1.jpg';
 import ProductCard from '../components/UI/ProductCard/ProductCard';
+import product from '../assets/data/Products';
 
 const Products = () => {
   /* ------ HARCODEO PRODUCTOS ------ */
-  const product = [
-    {
-      id: '1',
-      title: 'Angular Basico',
-      price: 24.0,
-      image: Curso1,
-      largeDesciption: 'descripcion larga',
-      shortDescription: 'descripcion corta',
-      stock: '2',
-    },
-    {
-      id: '2',
-      title: 'Node Basico',
-      price: 24.0,
-      image: Curso1,
-      largeDesciption: 'descripcion larga node basico',
-      shortDescription: 'descripcion corta node basico',
-      stock: '5',
-    },
-  ];
+  // const product = [
+  //   {
+  //     id: '1',
+  //     title: 'Angular Basico',
+  //     price: 24.0,
+  //     image: Curso1,
+  //     largeDesciption: 'descripcion larga',
+  //     shortDescription: 'descripcion corta',
+  //     stock: '2',
+  //   },
+  //   {
+  //     id: '2',
+  //     title: 'Node Basico',
+  //     price: 24.0,
+  //     image: Curso1,
+  //     largeDesciption: 'descripcion larga node basico',
+  //     shortDescription: 'descripcion corta node basico',
+  //     stock: '5',
+  //   },
+  // ];
 
   /* ------ Variables iniciacion estado ------ */
 
@@ -88,7 +88,7 @@ const Products = () => {
 
             {displayPage.map(item => (
               <Col lg="3" md="4" sm="6" xs="6" key={item.id} className="mb-4">
-                <ProductCard item={item} />
+                <ProductCard {...item} />
               </Col>
             ))}
 
