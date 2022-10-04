@@ -54,7 +54,7 @@ const Productos = () => {
                 onChange={e => setSearchTerm(e.target.value)}
               />
               <span>
-                <i class="ri-search-line"></i>
+                <i className="ri-search-line"></i>
               </span>
             </div>
           </Col>

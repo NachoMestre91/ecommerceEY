@@ -3,35 +3,11 @@ import {Container, Row, Col} from 'reactstrap';
 import {Link} from 'react-router-dom';
 import '../assets/css/Cart.css';
 
+/**
+ * ? Datos que recibe el componente tabla
+ * */
+import cartItems from '../assets/data/CartItems';
 const Cart = () => {
-  /**
-
-   * ? Datos que recibe el componente tabla
-   * */
-
-  const cartItems = [
-    {
-      id: '1',
-      price: '12',
-      image: 'sin-imagen',
-      title: 'angular js',
-      stock: '4',
-    },
-    {
-      id: '2',
-      image: 'sin-imagen',
-      price: '12',
-      title: 'node js',
-      stock: '2',
-    },
-    {
-      id: '3',
-      image: 'sin-imagen',
-      price: '12',
-      title: 'React js',
-      stock: '7',
-    },
-  ];
   return (
     <>
       <section>
@@ -99,7 +75,7 @@ const Tr = props => {
       <td className="text-center">${price}</td>
       <td className="text-center">{stock}</td>
       <td className="text-center cart__item-del">
-        <i class="ri-close-circle-line"></i>
+        <i className="ri-close-circle-line"></i>
       </td>
     </tr>
   );

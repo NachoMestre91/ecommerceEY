@@ -6,12 +6,11 @@ import Cart from '../../pages/Cart';
 import Carts from '../../components/UI/Cart/Carts.jsx';
 import ProductCard from '../../components/UI/ProductCard/ProductCard.jsx';
 import Products from '../../pages/Products';
+import {Register} from '../../auth/Register.jsx';
+import {Login} from '../../auth/Login.jsx';
 import Home from '../../pages/Home';
 import {collection, getDocs, addDoc, updateDoc, deleteDoc, doc} from 'firebase/firestore';
 import {db} from '../../firebase/firebaseConfig.js';
-// import {collection, getDocs, getFirestore} from 'firebase/firestore';
-// import Slider from '../UI/Slider/Slider';
-
 const Layout = () => {
   const [Users, setUsers] = useState([]);
   const usersCollectionRef = collection(db, 'usuarios');
@@ -42,16 +41,15 @@ const Layout = () => {
   return (
     <div>
       <Header />
-      {Users.map(user => {
+      {/* {Users.map(user => {
         return (
-          <div>
-            {' '}
+          <>
             <p>ID: {user.id}</p>
             <p>usuario: {user.email}</p>
             <p>password: {user.password}</p>
-          </div>
+          </>
         );
-      })}
+      })} */}
 
       {/* {productos.map(products => {
         return (
@@ -74,6 +72,8 @@ const Layout = () => {
 
       <Cart />
       <Products />
+      <Register />
+      <Login />
       {/* <Carts /> */}
       <Footer />
     </div>
