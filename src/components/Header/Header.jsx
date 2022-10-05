@@ -1,22 +1,23 @@
-import React, {useRef, useEffect} from 'react';
-import {Container} from 'reactstrap';
-import logo from '../../assets/images//isologo.png';
-import {NavLink, Link} from 'react-router-dom';
-import {useSelector, useDispatch} from 'react-redux';
-import {cartUiActions} from '../../store/shopping-cart/cartUiSlice';
-import './header.css';
+import React, { useRef, useEffect } from "react";
+import { Container } from "reactstrap";
+import logo from "../../assets/images//isologo.png";
+import { NavLink, Link } from "react-router-dom";
+import { useSelector, useDispatch } from "react-redux";
+import { cartUiActions } from "../../store/shopping-cart/cartUiSlice";
+import "./header.css";
+import { startLogout } from "../../store/auth/thunks";
 
 /* ------ Hardcodeo Menu ------ */
 
 const nav__links = [
   {
-    display: 'Home',
-    path: '/home',
+    display: "Home",
+    path: "/home",
   },
 
   {
-    display: 'Carrito',
-    path: '/cart',
+    display: "Carrito",
+    path: "/cart",
   },
 ];
 
@@ -24,10 +25,13 @@ const Header = () => {
   const menuRef = useRef(null);
   const headerRef = useRef(null);
   const dispatch = useDispatch();
+  const { displayName } = useSelector((state) => state.auth);
+  const onLogout = () => {
+    dispatch(startLogout());
+  };
 
-  const totalQuantity = useSelector(state => state.cart.totalQuantity);
-
-  const toggleMenu = () => menuRef.current.classList.toggle('show__menu');
+  const totalQuantity = useSelector((state) => state.cart.totalQuantity);
+  const toggleMenu = () => menuRef.current.classList.toggle("show__menu");
   const toggleCart = () => {
     dispatch(cartUiActions.toggle());
   };
@@ -35,15 +39,18 @@ const Header = () => {
   /* ------ Scroll Fixed Menu ------ */
 
   useEffect(() => {
-    window.addEventListener('scroll', () => {
-      if (document.body.scrollTop > 80 || document.documentElement.scrollTop > 80) {
-        headerRef.current.classList.add('header__shrink');
+    window.addEventListener("scroll", () => {
+      if (
+        document.body.scrollTop > 80 ||
+        document.documentElement.scrollTop > 80
+      ) {
+        headerRef.current.classList.add("header__shrink");
       } else {
-        headerRef.current.classList.remove('header__shrink');
+        headerRef.current.classList.remove("header__shrink");
       }
     });
 
-    return () => window.removeEventListener('scroll', null);
+    return () => window.removeEventListener("scroll", null);
   }, []);
 
   return (
@@ -63,11 +70,14 @@ const Header = () => {
                 <NavLink
                   to={item.path}
                   key={index}
-                  className={navClass => (navClass.isActive ? 'active__menu' : '')}
+                  className={(navClass) =>
+                    navClass.isActive ? "active__menu" : ""
+                  }
                 >
                   {item.display}
                 </NavLink>
               ))}
+              <p style={{ color: "white" }}>{displayName}</p>
             </div>
           </div>
 
@@ -83,10 +93,13 @@ const Header = () => {
                 <i className="ri-user-6-line"></i>
               </Link>
             </span>
-
-            <span className="mobile__menu" onClick={toggleMenu}>
-              <i className="ri-menu-line"></i>
+            <span onClick={onLogout} style={{ color: "white" }}>
+              Logout
             </span>
+
+            {/* <span className="mobile__menu" onClick={toggleMenu}>
+              <i className="ri-menu-line"></i>
+            </span> */}
           </div>
         </div>
       </Container>

@@ -1,15 +1,17 @@
-import React from 'react';
-import {Routes, Route, Navigate} from 'react-router-dom';
+import React from "react";
+import { Routes, Route, Navigate } from "react-router-dom";
 
-import Home from '../pages/Home';
-import Productos from '../pages/Productos';
+import Home from "../pages/Home";
+import Productos from "../pages/Productos";
 // import FoodDetails from '../pages/FoodDetails';
-import DetalleProducto from '../pages/DetalleProducto';
+import DetalleProducto from "../pages/DetalleProducto";
 
-import Cart from '../pages/Cart';
-import Checkout from '../pages/Checkout';
-import Login from '../pages/Login';
-import Register from '../pages/Register';
+import Cart from "../pages/Cart";
+import Checkout from "../pages/Checkout";
+import Login from "../pages/Login";
+import Register from "../pages/Register";
+import NewLogin from "../auth/pages/Login";
+import NewRegister from "../auth/pages/Register";
 
 const Routers = () => {
   /* ------ Ruteo ( falta armar logica con el login ) ------ */
@@ -22,8 +24,10 @@ const Routers = () => {
       <Route path="/detalleproducto/:id" element={<DetalleProducto />} />
       <Route path="/cart" element={<Cart />} />
       <Route path="/checkout" element={<Checkout />} />
-      <Route path="/login" element={<Login />} />
-      <Route path="/register" element={<Register />} />
+      {/* <Route path="/login" element={<Login />} /> */}
+      {/* <Route path="/register" element={<Register />} /> */}
+      <Route path="/login" element={<NewLogin />} />
+      <Route path="/register" element={<NewRegister />} />
     </Routes>
   );
 };
