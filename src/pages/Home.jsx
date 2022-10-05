@@ -6,6 +6,7 @@ import heroImg from '../assets/images/banner-01.gif';
 import bannerImg from '../assets/images/banner-02.gif';
 import {Link} from 'react-router-dom';
 import products from '../assets/fake-data/products.js';
+import Slider from '../components/UI/slider/Slider';
 
 // import Category from '../components/UI/category/Category.jsx';
 // import ProductCard from '../components/UI/product-card/ProductCard.jsx';
@@ -62,9 +63,10 @@ const Home = () => {
         <Container>
           <Row>
             <Col lg="12" md="12">
-              <p className=" d-flex align-items-center gap-2 ">
+              <Slider />
+              {/* <p className=" d-flex align-items-center gap-2 ">
                 <span style={{color: '#fcd202'}}>Banner slider</span>
-              </p>
+              </p> */}
 
               <div className="hero__img">
                 <img src={bannerImg} alt="hero-img" className="w-100" />

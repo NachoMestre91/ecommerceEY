@@ -1,13 +1,15 @@
 import React from 'react';
 import {Pagination, Navigation} from 'swiper';
 import {Swiper, SwiperSlide} from 'swiper/react';
+
 import 'swiper/css';
 import 'swiper/css/navigation';
 import 'swiper/css/pagination';
 import 'swiper/css/scrollbar';
-import SliderItem from './SliderItem';
+// import SliderItem from './SliderItem';
 import Img1 from '../../../assets/images/curso-01.jpg';
-import Img2 from '../../../assets/images/curso-02.jpg';
+// import Img2 from '../../../assets/images/curso-02.jpg';
+import './slider.css';
 
 const Slider = () => {
   // const {data} = props;
@@ -75,8 +77,8 @@ const Slider = () => {
     },
   ];
 
-  const STOCK_LIMITADO = 'Stock limitado';
-  const STOCK_DISPONIBLE = 'Stock disponible';
+  const Limitado = 'Limitado';
+  const Disponible = 'Disponible';
 
   const filtroProductos = data.filter(product => product.stock > 0).slice(0, 9);
 
@@ -93,7 +95,7 @@ const Slider = () => {
             clickable: true,
           }}
           navigation={true}
-          modules={[Navigation]}
+          modules={[Pagination, Navigation]}
         >
           {/* {data.slice(1, 10).map(item => ( */}
           {/* <SwiperSlide key={item.id}> */}
@@ -103,7 +105,7 @@ const Slider = () => {
                 <div key={index}>
                   {index === 0 ? (
                     <>
-                      <img className="w-75 h-75" src={''} alt="" />
+                      <img src={''} alt="" />
                     </>
                   ) : (
                     <>
@@ -112,7 +114,7 @@ const Slider = () => {
                         <h6 style={{color: '#fcd202'}}>{data.title}</h6>
 
                         <h6 className="addTOCart__btn" style={{color: '#21242d'}}>
-                          {data.stock <= 5 ? STOCK_LIMITADO : STOCK_DISPONIBLE}
+                          {data.stock <= 5 ? Limitado : Disponible}
                         </h6>
                       </div>
                     </>
