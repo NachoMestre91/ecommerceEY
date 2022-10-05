@@ -22,7 +22,7 @@ const Products = () => {
   useEffect(() => {
     const getProductos = async () => {
       const data = await getDocs(usersCollectionRef);
-      console.log(data);
+      // console.log(data);
       setProductos(data.docs.map((doc) => ({ ...doc.data(), id: doc.id })));
     };
 

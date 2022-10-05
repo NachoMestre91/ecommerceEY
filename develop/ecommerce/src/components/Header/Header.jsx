@@ -1,19 +1,21 @@
-import React, {useRef, useEffect} from 'react';
-import {NavLink, Container} from 'reactstrap';
-import {useSelector, useDispatch} from 'react-redux';
-// import {NavLink, Link} from 'react-router-dom';
-import logo from '../../assets/images/isologo.png';
-
-// import {useSelector, useDispatch} from 'react-redux';
+import React, { useRef, useEffect } from "react";
+import { Container } from "reactstrap";
+import { useSelector, useDispatch } from "react-redux";
+import { Link } from "react-router-dom";
+import logo from "../../assets/images/isologo.png";
 // import {cartUiActions} from '../../store/shopping-cart/cartUiSlice';
-import './Header.css';
+import "./Header.css";
+import { startLogout } from "../../store/auth/thunks";
 
 const Header = () => {
   const menuRef = useRef(null);
   const headerRef = useRef(null);
-  // const dispatch = useDispatch();
-
-  const toggleMenu = () => menuRef.current.classList.toggle('show__menu');
+  const dispatch = useDispatch();
+  const { status } = useSelector((state) => state.auth);
+  const onLogout = () => {
+    dispatch(startLogout());
+  };
+  const toggleMenu = () => menuRef.current.classList.toggle("show__menu");
   // const toggleCart = () => {
   //   dispatch(toggle());
   // };
@@ -21,27 +23,30 @@ const Header = () => {
   /* ------ Scroll Fixed Menu ------ */
 
   useEffect(() => {
-    window.addEventListener('scroll', () => {
-      if (document.body.scrollTop > 80 || document.documentElement.scrollTop > 80) {
-        headerRef.current.classList.add('header__scroll');
+    window.addEventListener("scroll", () => {
+      if (
+        document.body.scrollTop > 80 ||
+        document.documentElement.scrollTop > 80
+      ) {
+        headerRef.current.classList.add("header__scroll");
       } else {
-        headerRef.current.classList.remove('header__scroll');
+        headerRef.current.classList.remove("header__scroll");
       }
     });
 
-    return () => window.removeEventListener('scroll', null);
+    return () => window.removeEventListener("scroll", null);
   }, []);
 
   /* ------ Hardcodeo Menu ------ */
   const nav_menu = [
     {
-      display: 'Home',
-      path: '/home',
+      display: "Home",
+      path: "/home",
     },
 
     {
-      display: 'Carrito',
-      path: '/cart',
+      display: "Carrito",
+      path: "/cart",
     },
   ];
 
@@ -56,19 +61,21 @@ const Header = () => {
           </div>
 
           {/* ======= menu ======= */}
-          <div className="navigation" ref={menuRef} onClick={toggleMenu}>
+          {/* <div className="navigation" ref={menuRef} onClick={toggleMenu}>
             <div className="menu d-flex align-items-center gap-5">
               {nav_menu.map((item, index) => (
-                <NavLink
+                <navLink
                   to={item.path}
                   key={index}
-                  className={navClass => (navClass.isActive ? 'active__menu' : '')}
+                  className={(navClass) =>
+                    navClass.isActive ? "active__menu" : ""
+                  }
                 >
                   {item.display}
-                </NavLink>
+                </navLink>
               ))}
             </div>
-          </div>
+          </div> */}
 
           {/* ======== nav right icons ========= */}
           <div className="nav__right d-flex align-items-center gap-4">
@@ -78,14 +85,18 @@ const Header = () => {
             </span>
 
             <span className="user">
-              {/* <Link to="/login"> */}
-              <i className="ri-user-6-line"></i>
-              {/* </Link> */}
+              {status === "not-authenticated" ? (
+                <Link to="/login">
+                  <i className="ri-user-6-line"></i>
+                </Link>
+              ) : (
+                <i onClick={onLogout} className="ri-logout-box-r-line"></i>
+              )}
             </span>
 
-            <span className="mobile__menu">
+            {/* <span className="mobile__menu">
               <i className="ri-menu-line"></i>
-            </span>
+            </span> */}
           </div>
         </div>
       </Container>
