@@ -18,17 +18,17 @@ const CartItem = () => {
                 </p>
                 <div className=" d-flex align-items-center justify-content-between increase__decrease-btn">
                   <span className="increase__btn">
-                    <i class="ri-add-line"></i>
+                    <i className="ri-add-line"></i>
                   </span>
                   <span className="quantity">Cantidad</span>
                   <span className="decrease__btn">
-                    <i class="ri-subtract-line"></i>
+                    <i className="ri-subtract-line"></i>
                   </span>
                 </div>
               </div>
 
               <span className="delete__btn">
-                <i class="ri-close-circle-line "></i>
+                <i className="ri-close-circle-line "></i>
               </span>
             </div>
           </div>
