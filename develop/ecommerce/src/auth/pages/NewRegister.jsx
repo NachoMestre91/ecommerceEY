@@ -1,23 +1,28 @@
+import { useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
 import { useForm } from "../../hooks/useForms";
 import { Container, Row, Col } from "reactstrap";
 import "../../assets/css/login.css";
-import { useDispatch, useSelector } from "react-redux";
-// import { useMemo } from "react";
-import { startLoginWithEmailPassword } from "../../store/auth/thunks";
+import { useMemo } from "react";
+import { useSelector } from "react-redux";
+import { startCreatingUserWithEmailPassword } from "../../store/auth/thunks";
 
-const NewLogin = () => {
-  // const { status, errorMessage } = useSelector((state) => state.auth);
+export const NewRegister = () => {
   const dispatch = useDispatch();
-  const initialValues = { password: "", email: "" };
-  const { email, password, handleForm, handleReset, form } =
+  const { status } = useSelector((state) => state.auth);
+  const isChekingAuthentication = useMemo(
+    () => status === "checking",
+    [status]
+  );
+
+  const initialValues = { displayName: "", email: "", password: "" };
+  const { email, displayName, password, handleForm, handleReset, form } =
     useForm(initialValues);
-  // const isAuth = useMemo(() => status === "checking", [status]);
 
   const handleSubmit = (e) => {
     e.preventDefault();
     handleReset();
-    dispatch(startLoginWithEmailPassword(form));
+    dispatch(startCreatingUserWithEmailPassword(form));
   };
 
   return (
@@ -26,6 +31,16 @@ const NewLogin = () => {
         <Row>
           <Col lg="6" md="6" sm="12" className="m-auto text-center">
             <form onSubmit={handleSubmit} className="form mb-5">
+              <div className="form__group">
+                <input
+                  type="text"
+                  name="displayName"
+                  value={displayName}
+                  onChange={handleForm}
+                  placeholder="Ingrese nombre..."
+                  className="input-login"
+                />
+              </div>
               <div className="form__group">
                 <input
                   type="email"
@@ -48,12 +63,12 @@ const NewLogin = () => {
               </div>
               <input
                 type="submit"
-                value="login"
+                value="crear usuario"
                 className="addTOCart__btn"
-                // disabled={isAuth}
+                // disabled={isChekingAuthentication}
               />
             </form>
-            <Link to="/register">Crear cuenta</Link>
+            <Link to="/auth/login">Ir a Login</Link>
           </Col>
         </Row>
       </Container>
@@ -61,4 +76,4 @@ const NewLogin = () => {
   );
 };
 
-export default NewLogin;
+

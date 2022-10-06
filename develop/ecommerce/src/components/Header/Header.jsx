@@ -86,7 +86,7 @@ const Header = () => {
 
             <span className="user">
               {status === "not-authenticated" ? (
-                <Link to="/login">
+                <Link to="/auth/login">
                   <i className="ri-user-6-line"></i>
                 </Link>
               ) : (

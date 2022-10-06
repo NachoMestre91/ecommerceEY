@@ -8,22 +8,29 @@ import Products from "../pages/Products";
 import ProductDetail from "../pages/ProductDetail";
 import Cart from "../pages/Cart";
 import Checkout from "../pages/Checkout";
-import NewLogin from "../auth/pages/Login";
-import NewRegister from "../auth/pages/Register";
+import { useSelector } from "react-redux";
+import { AuthRoutes } from "../auth/routes/AuthRoutes";
+
 
 const Routers = () => {
-  /* ------ Ruteo ( falta armar logica con el login ) ------ */
-
+  const {status} = useSelector(state => state.auth);
   return (
     <Routes>
-      <Route path="/" element={<Navigate to="/home" />} />
-      <Route path="/home" element={<Home />} />
-      <Route path="/detalleproducto" element={<Products />} />
-      <Route path="/detalleproducto/:id" element={<ProductDetail />} />
-      <Route path="/cart" element={<Cart />} />
-      <Route path="/checkout" element={<Checkout />} />
-      <Route path="/login" element={<NewLogin />} />
-      <Route path="/register" element={<NewRegister />} />
+      {
+        status!=='authenticated' ?
+        <>
+           <Route path="/auth/*" element={<AuthRoutes />} />
+          <Route path="/" element={<Navigate to="/home" />} />
+          <Route path="/home" element={<Home />} />
+        </> : 
+        <>
+          <Route path="/detalleproducto" element={<Products />} />
+          <Route path="/detalleproducto/:id" element={<ProductDetail />} />
+          <Route path="/cart" element={<Cart />} />
+          <Route path="/checkout" element={<Checkout />} />
+        </>
+      }
+      {/* <Route path="/*" element={<Navigate to="/home" />} /> */}
     </Routes>
   );
 };
