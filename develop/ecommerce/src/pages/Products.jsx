@@ -1,12 +1,34 @@
-import React, {useState} from 'react';
-import {Container, Row, Col} from 'reactstrap';
-import ReactPaginate from 'react-paginate';
-import '../assets/css/pagination.css';
-import '../assets/css/Products.css';
-import ProductCard from '../components/UI/ProductCard/ProductCard';
-import product from '../assets/data/Products';
+import React, { useState, useEffect } from "react";
+import { Container, Row, Col } from "reactstrap";
+import ReactPaginate from "react-paginate";
+import "../assets/css/pagination.css";
+import "../assets/css/Products.css";
+import ProductCard from "../components/UI/ProductCard/ProductCard";
+import {
+  collection,
+  getDocs,
+  addDoc,
+  updateDoc,
+  deleteDoc,
+  doc,
+} from "firebase/firestore";
+import { db } from "../firebase/firebaseConfig.js";
+import product from "../assets/data/Products";
 
 const Products = () => {
+  const [productos, setProductos] = useState([]);
+  const usersCollectionRef = collection(db, "productos");
+
+  useEffect(() => {
+    const getProductos = async () => {
+      const data = await getDocs(usersCollectionRef);
+      // console.log(data);
+      setProductos(data.docs.map((doc) => ({ ...doc.data(), id: doc.id })));
+    };
+
+    getProductos();
+  }, []);
+
   /* ------ HARCODEO PRODUCTOS ------ */
   // const product = [
   //   {
@@ -31,13 +53,13 @@ const Products = () => {
 
   /* ------ Variables iniciacion estado ------ */
 
-  const [searchTerm, setSearchTerm] = useState('');
+  const [searchTerm, setSearchTerm] = useState("");
   const [pageNumber, setPageNumber] = useState(0);
 
   /* ------ Accion de filtrado del search ------ */
 
-  const searchedProduct = product.filter(item => {
-    if (searchTerm.value === '') {
+  const searchedProduct = product.filter((item) => {
+    if (searchTerm.value === "") {
       return item;
     }
     if (item.title.toLowerCase().includes(searchTerm.toLowerCase())) {
@@ -51,17 +73,34 @@ const Products = () => {
 
   const productPerPage = 12;
   const visitedPage = pageNumber * productPerPage;
-  const displayPage = searchedProduct.slice(visitedPage, visitedPage + productPerPage);
+  const displayPage = searchedProduct.slice(
+    visitedPage,
+    visitedPage + productPerPage
+  );
   const pageCount = Math.ceil(searchedProduct.length / productPerPage);
 
   /* ------ Seleccion de  ------ */
 
-  const cambiarPagina = ({selected}) => {
+  const cambiarPagina = ({ selected }) => {
     setPageNumber(selected);
   };
 
   return (
     <div>
+      {productos.map((products) => {
+        return (
+          <div>
+            {" "}
+            <p>ID: {products.id}</p>
+            <p>titulo: {products.title}</p>
+            <p>imagen: {products.image}</p>
+            <p>descripcion larga: {products.largeDescription}</p>
+            <p>Precio: {products.price}</p>
+            <p>Descripcion corta: {products.shortDescription}</p>
+            <p>stock: {products.stock}</p>
+          </div>
+        );
+      })}
       <section>
         <Container>
           <Row>
@@ -71,7 +110,7 @@ const Products = () => {
                   type="text"
                   placeholder="Buscar producto"
                   value={searchTerm}
-                  onChange={e => setSearchTerm(e.target.value)}
+                  onChange={(e) => setSearchTerm(e.target.value)}
                 />
                 <span>
                   <i className="ri-search-line"></i>
@@ -86,7 +125,7 @@ const Products = () => {
               </div>
             </Col>
 
-            {displayPage.map(item => (
+            {displayPage.map((item) => (
               <Col lg="3" md="4" sm="6" xs="6" key={item.id} className="mb-4">
                 <ProductCard {...item} />
               </Col>
@@ -96,8 +135,8 @@ const Products = () => {
               <ReactPaginate
                 pageCount={pageCount}
                 onPageChange={cambiarPagina}
-                previousLabel={'<Anterior'}
-                nextLabel={'Siguiente >'}
+                previousLabel={"<Anterior"}
+                nextLabel={"Siguiente >"}
                 containerClassName=" paginationBttns "
               />
             </div>
