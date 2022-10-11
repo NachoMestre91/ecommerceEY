@@ -31,6 +31,7 @@ const Header = () => {
   };
 
   const totalQuantity = useSelector(state => state.cart.totalQuantity);
+  const {status} = useSelector(state => state.auth);
   const toggleMenu = () => menuRef.current.classList.toggle('show__menu');
   const toggleCart = () => {
     dispatch(cartUiActions.toggle());
@@ -84,17 +85,29 @@ const Header = () => {
             </span>
 
             <span className="user">
+              {status === 'not-authenticated' ? (
+                <Link to="/login">
+                  <i className="ri-user-6-line"></i>
+                </Link>
+              ) : (
+                <i onClick={onLogout} className="ri-logout-box-r-line"></i>
+              )}
+            </span>
+
+            {/* 
+            <span className="cart__icon" onClick={toggleCart}>
+              <i className="ri-shopping-cart-line"></i>
+              <span className="cart__badge">{totalQuantity}</span>
+            </span>
+
+            <span className="user">
               <Link to="/login">
                 <i className="ri-user-6-line"></i>
               </Link>
             </span>
             <span onClick={onLogout} style={{color: 'white'}}>
-              Logout
-            </span>
-
-            {/* <span className="mobile__menu" onClick={toggleMenu}>
-              <i className="ri-menu-line"></i>
-            </span> */}
+              <i onClick={onLogout} className="ri-logout-box-r-line"></i>
+            </span>        */}
           </div>
         </div>
       </Container>

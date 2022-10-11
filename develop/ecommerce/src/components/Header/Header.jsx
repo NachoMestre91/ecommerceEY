@@ -1,57 +1,60 @@
-import React, { useRef, useEffect } from "react";
-import { Container } from "reactstrap";
-import { useSelector, useDispatch } from "react-redux";
-import { Link } from "react-router-dom";
-import logo from "../../assets/images/isologo.png";
-// import {cartUiActions} from '../../store/shopping-cart/cartUiSlice';
-import "./Header.css";
-import { startLogout } from "../../store/auth/thunks";
+import React, {useRef, useEffect} from 'react';
+import {Container} from 'reactstrap';
+import {useSelector, useDispatch} from 'react-redux';
+import {Link} from 'react-router-dom';
+import logo from '../../assets/images/isologo.png';
+import {cartUiActions} from '../../store/Slices/cartUiSlice.js';
+import './Header.css';
+import {startLogout} from '../../store/auth/thunks';
 
 const Header = () => {
   const menuRef = useRef(null);
   const headerRef = useRef(null);
   const dispatch = useDispatch();
-  const { status } = useSelector((state) => state.auth);
+  const {status} = useSelector(state => state.auth);
   const onLogout = () => {
     dispatch(startLogout());
   };
-  const toggleMenu = () => menuRef.current.classList.toggle("show__menu");
+
+  // const totalQuantity = useSelector(state => state.cart.totalQuantity);
+  const toggleMenu = () => menuRef.current.classList.toggle('show__menu');
   // const toggleCart = () => {
   //   dispatch(toggle());
   // };
 
+  const toggleCart = () => {
+    dispatch(cartUiActions.toggle());
+  };
+
   /* ------ Scroll Fixed Menu ------ */
 
   useEffect(() => {
-    window.addEventListener("scroll", () => {
-      if (
-        document.body.scrollTop > 80 ||
-        document.documentElement.scrollTop > 80
-      ) {
-        headerRef.current.classList.add("header__scroll");
+    window.addEventListener('scroll', () => {
+      if (document.body.scrollTop > 80 || document.documentElement.scrollTop > 80) {
+        headerRef.current.classList.add('header__scroll');
       } else {
-        headerRef.current.classList.remove("header__scroll");
+        headerRef.current.classList.remove('header__scroll');
       }
     });
 
-    return () => window.removeEventListener("scroll", null);
+    return () => window.removeEventListener('scroll', null);
   }, []);
 
   /* ------ Hardcodeo Menu ------ */
   const nav_menu = [
     {
-      display: "Home",
-      path: "/home",
+      display: 'Home',
+      path: '/home',
     },
 
     {
-      display: "Carrito",
-      path: "/cart",
+      display: 'Carrito',
+      path: '/cart',
     },
   ];
 
   return (
-    <header className="header" ref={headerRef}>
+    <header className="header" ref={headerRef} onClick={toggleMenu}>
       <Container>
         <div className="nav__wrapper d-flex align-items-center justify-content-between">
           <div className="logo">
@@ -79,13 +82,13 @@ const Header = () => {
 
           {/* ======== nav right icons ========= */}
           <div className="nav__right d-flex align-items-center gap-4">
-            <span className="cart__icon">
+            <span className="cart__icon" onClick={toggleCart}>
               <i className="ri-shopping-cart-line"></i>
               <span className="cart__badge">0</span>
             </span>
 
             <span className="user">
-              {status === "not-authenticated" ? (
+              {status === 'not-authenticated' ? (
                 <Link to="/login">
                   <i className="ri-user-6-line"></i>
                 </Link>

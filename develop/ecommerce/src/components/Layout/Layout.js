@@ -1,30 +1,27 @@
-import React, { useEffect, useState } from "react";
-import Header from "../Header/Header.jsx";
-import Footer from "../Footer/Footer.jsx";
-import Routers from "../../routes/Routers";
-import Cart from "../../pages/Cart";
-import Carts from "../../components/UI/Cart/Carts.jsx";
-import ProductCard from "../../components/UI/ProductCard/ProductCard.jsx";
-import Products from "../../pages/Products";
-import Home from "../../pages/Home";
-import {
-  collection,
-  getDocs,
-  addDoc,
-  updateDoc,
-  deleteDoc,
-  doc,
-} from "firebase/firestore";
-import { db } from "../../firebase/firebaseConfig.js";
+import React, {useEffect, useState} from 'react';
+import Header from '../Header/Header.jsx';
+import Footer from '../Footer/Footer.jsx';
+import Routers from '../../routes/Routers';
+import Cart from '../../pages/Cart';
+import Carts from '../../components/UI/Cart/Carts.jsx';
+import ProductCard from '../../components/UI/ProductCard/ProductCard.jsx';
+import Products from '../../pages/Products';
+import Home from '../../pages/Home';
+import {useSelector} from 'react-redux';
+import {collection, getDocs, addDoc, updateDoc, deleteDoc, doc} from 'firebase/firestore';
+import {db} from '../../firebase/firebaseConfig.js';
+
 const Layout = () => {
+  const showCart = useSelector(state => state.cartUi.cartIsVisible);
+
   const [Users, setUsers] = useState([]);
-  const usersCollectionRef = collection(db, "usuarios");
+  const usersCollectionRef = collection(db, 'usuarios');
 
   useEffect(() => {
     const getUsuarios = async () => {
       const data = await getDocs(usersCollectionRef);
       // console.log(data);
-      setUsers(data.docs.map((doc) => ({ ...doc.data(), id: doc.id })));
+      setUsers(data.docs.map(doc => ({...doc.data(), id: doc.id})));
     };
 
     getUsuarios();
@@ -70,7 +67,7 @@ const Layout = () => {
           </div>
         );
       })} */}
-
+      {showCart && <Carts />}
       <div>
         <Routers />
       </div>
