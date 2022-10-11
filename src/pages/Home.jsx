@@ -65,10 +65,6 @@ const Home = () => {
               <p className=" d-flex align-items-center gap-2 ">
                 <span style={{color: '#fcd202'}}>Banner slider</span>
               </p>
-
-              <div className="hero__img">
-                <img src={bannerImg} alt="hero-img" className="w-100" />
-              </div>
             </Col>
 
             <Col lg="6" md="6"></Col>

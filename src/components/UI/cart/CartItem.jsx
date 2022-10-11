@@ -9,7 +9,7 @@ const CartItem = ({item}) => {
 
   const dispatch = useDispatch();
 
-  const {id, title, price, image, quantity, totalPrice} = item;
+  const {id, title, price, image, quantity, totalPrice, largeDesciption, shortDescription} = item;
 
   /* ------ Agregar cantidad Item ------ */
 
@@ -20,6 +20,8 @@ const CartItem = ({item}) => {
         title,
         price,
         image,
+        largeDesciption,
+        shortDescription,
       })
     );
   };
@@ -52,7 +54,10 @@ const CartItem = ({item}) => {
                 <span className="increase__btn" onClick={incrementItem}>
                   <i className="ri-add-line"></i>
                 </span>
-                <span className="quantity">{quantity}</span>
+                <span className="quantity">
+                  {quantity}
+                  {largeDesciption}
+                </span>
                 <span className="decrease__btn" onClick={decreaseItem}>
                   <i className="ri-subtract-line"></i>
                 </span>
