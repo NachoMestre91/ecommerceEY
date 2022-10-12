@@ -96,10 +96,6 @@ const Header = () => {
                 <i onClick={onLogout} className="ri-logout-box-r-line"></i>
               )}
             </span>
-
-            {/* <span className="mobile__menu">
-              <i className="ri-menu-line"></i>
-            </span> */}
           </div>
         </div>
       </Container>
