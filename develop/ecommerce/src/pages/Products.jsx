@@ -1,55 +1,13 @@
-import React, { useState, useEffect } from "react";
+import { useState } from "react";
 import { Container, Row, Col } from "reactstrap";
 import ReactPaginate from "react-paginate";
 import "../assets/css/pagination.css";
 import "../assets/css/Products.css";
 import ProductCard from "../components/UI/ProductCard/ProductCard";
-import {
-  collection,
-  getDocs,
-  addDoc,
-  updateDoc,
-  deleteDoc,
-  doc,
-} from "firebase/firestore";
-import { db } from "../firebase/firebaseConfig.js";
-import product from "../assets/data/Products";
+import { useSelector } from "react-redux";
 
 const Products = () => {
-  const [productos, setProductos] = useState([]);
-  const usersCollectionRef = collection(db, "productos");
-
-  useEffect(() => {
-    const getProductos = async () => {
-      const data = await getDocs(usersCollectionRef);
-      // console.log(data);
-      setProductos(data.docs.map((doc) => ({ ...doc.data(), id: doc.id })));
-    };
-
-    getProductos();
-  }, []);
-
-  /* ------ HARCODEO PRODUCTOS ------ */
-  // const product = [
-  //   {
-  //     id: '1',
-  //     title: 'Angular Basico',
-  //     price: 24.0,
-  //     image: Curso1,
-  //     largeDesciption: 'descripcion larga',
-  //     shortDescription: 'descripcion corta',
-  //     stock: '2',
-  //   },
-  //   {
-  //     id: '2',
-  //     title: 'Node Basico',
-  //     price: 24.0,
-  //     image: Curso1,
-  //     largeDesciption: 'descripcion larga node basico',
-  //     shortDescription: 'descripcion corta node basico',
-  //     stock: '5',
-  //   },
-  // ];
+  const { products } = useSelector((state) => state.product);
 
   /* ------ Variables iniciacion estado ------ */
 
@@ -58,7 +16,7 @@ const Products = () => {
 
   /* ------ Accion de filtrado del search ------ */
 
-  const searchedProduct = product.filter((item) => {
+  const searchedProduct = products.filter((item) => {
     if (searchTerm.value === "") {
       return item;
     }
@@ -87,7 +45,7 @@ const Products = () => {
 
   return (
     <div>
-      {productos.map((products) => {
+      {/* {productos.map((products) => {
         return (
           <div>
             {" "}
@@ -100,7 +58,7 @@ const Products = () => {
             <p>stock: {products.stock}</p>
           </div>
         );
-      })}
+      })} */}
       <section>
         <Container>
           <Row>
