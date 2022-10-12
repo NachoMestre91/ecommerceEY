@@ -1,3 +1,5 @@
+/* SLIDER ITEM STYLE*/
+
 .review__text {
   color: #777;
   line-height: 30px;
@@ -9,6 +11,41 @@
   height: 50px;
   border-radius: 10px;
   object-fit: cover;
+}
+
+.swiper-container {
+  list-style: none;
+}
+.swiper-button-prev {
+  color: #fcd202 !important;
+  color: var(--swiper-navigation-color, #fcd202(--swiper-theme-color)) !important;
+}
+.slide {
+  text-align: center;
+  height: 320px;
+  line-height: 320px;
+  background: #364d79;
+  overflow: hidden;
+}
+.pagination {
+  bottom: 0;
+  padding-bottom: 4px;
+}
+
+@media only screen and (max-width: 768px) {
+  .review__text {
+    font-size: 0.8rem;
+    margin: 20px 0px;
+  }
+
+  .slider__content img {
+    width: 35px;
+    height: 35px;
+  }
+
+  .slider__content h6 {
+    font-size: 0.8rem;
+  }
 }
 
 @media only screen and (max-width: 768px) {
