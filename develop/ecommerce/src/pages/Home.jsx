@@ -7,22 +7,11 @@ import Slider from '../components/UI/Slider/Slider';
 const Home = () => {
   return (
     <section className="Fondo-banner">
-      <Container>
-        <Row>
-          <Col lg="12" md="12">
-            <p className=" d-flex align-items-center gap-2 ">
-              <span style={{color: '#fcd202'}}>Banner sliderss</span>
-              <Slider />
-            </p>
-
-            <div className="contenedor-banner">
-              <img src={bannerImg} alt="hero-img" className="w-100" />
-            </div>
-          </Col>
-
-          <Col lg="6" md="6"></Col>
-        </Row>
-      </Container>
+      <Row>
+        <Col lg="12" md="12">
+          <Slider />
+        </Col>
+      </Row>
     </section>
   );
 };
