@@ -28,6 +28,7 @@ const Footer = () => {
                   <p>Josephine Quiroga</p>
                   <p>Pablo Gargaglione</p>
                   <p>Bruno Arias</p>
+                  <p>Tony Sosa</p>
                 </ListGroupItem>
               </ListGroup>
             </Col>
