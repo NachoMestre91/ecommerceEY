@@ -14,7 +14,7 @@ const Header = () => {
 
   const {status} = useSelector(state => state.auth);
   const {cartIsVisible} = useSelector(state => state.cartUi);
-  // const totalQuantity = useSelector(state => state.cart.totalQuantity);
+  const totalQuantity = useSelector(state => state.cart.totalQuantity);
 
   const onLogout = () => {
     dispatch(startLogout());
@@ -85,7 +85,7 @@ const Header = () => {
             <div className="nav__right d-flex align-items-center gap-4">
               <span className="cart__icon" onClick={toggleCart}>
                 <i className="ri-shopping-cart-line"></i>
-                <span className="cart__badge">0</span>
+                <span className="cart__badge">{totalQuantity}</span>
               </span>
 
               <span className="user">

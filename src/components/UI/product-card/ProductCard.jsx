@@ -14,14 +14,15 @@ const ProductCard = props => {
   /* ------ Accion agregar al carrito------ */
 
   const addToCart = () => {
-    dispatch(
-      cartActions.addItem({
-        id,
-        title,
-        image,
-        price,
-      })
-    );
+    alert('Product');
+    // dispatch(
+    //   cartActions.addItem({
+    //     id,
+    //     title,
+    //     image,
+    //     price,
+    //   })
+    // );
   };
 
   return (
@@ -44,7 +45,7 @@ const ProductCard = props => {
           </Link>
           <button className="addTOCart__btn" onClick={addToCart}>
             <i className="ri-bank-card-line ml-1"></i>
-            Comprar
+            Comprarrr
           </button>
         </div>
       </div>
