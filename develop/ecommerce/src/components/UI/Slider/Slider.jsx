@@ -2,7 +2,7 @@ import React from 'react';
 import {Pagination, Navigation} from 'swiper';
 import {Swiper, SwiperSlide} from 'swiper/react';
 import {useSelector} from 'react-redux';
-import SliderItem from './SliderItem';
+// import SliderItem from './SliderItem';
 import './slider.css';
 import 'swiper/css';
 import 'swiper/css/navigation';
@@ -11,8 +11,10 @@ import 'swiper/css/scrollbar';
 
 const Slider = () => {
   const {products} = useSelector(state => state.product);
-
-  const filtroProductos = products.filter(product => product.stock > 0).slice(0, 9);
+  console.log(products);
+  //const filtroProductos = products.filter(product => product.stock > 0).slice(0, 9);
+  const Limitado = 'Limitado';
+  const Disponible = 'Disponible';
 
   return (
     <>
@@ -22,18 +24,26 @@ const Slider = () => {
           spaceBetween={4}
           slidesPerGroup={2}
           loop={true}
-          loopFillGroupWithBlank={true}
           pagination={{
             clickable: true,
           }}
           navigation={true}
           modules={[Pagination, Navigation]}
         >
-          <SwiperSlide className="slider-item ">
-            {filtroProductos.map((product, item) => (
-              <SliderItem key={item} product={product} />
-            ))}
-          </SwiperSlide>
+          {products.map(product => (
+            <SwiperSlide key={product.id}>
+              <div className="slider-item  product__item">
+                <img className="img-slider" src={product.image} alt=""></img>
+                <h6 style={{color: '#fcd202'}}>{product.title}</h6>
+                <h6 style={{color: '#fcd202'}}>stock: {product.stock}</h6>
+                {product.stock <= 5 ? (
+                  <h6 className="stock-limitado">{Limitado}</h6>
+                ) : (
+                  <h6 className="stock-disponible">{Disponible}</h6>
+                )}
+              </div>
+            </SwiperSlide>
+          ))}
         </Swiper>
       </div>
     </>
