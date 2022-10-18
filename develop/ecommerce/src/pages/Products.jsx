@@ -1,23 +1,23 @@
-import { useState } from "react";
-import { Container, Row, Col } from "reactstrap";
-import ReactPaginate from "react-paginate";
-import "../assets/css/pagination.css";
-import "../assets/css/Products.css";
-import ProductCard from "../components/UI/ProductCard/ProductCard";
-import { useSelector } from "react-redux";
+import {useState} from 'react';
+import {Container, Row, Col} from 'reactstrap';
+import ReactPaginate from 'react-paginate';
+import '../assets/css/pagination.css';
+import '../assets/css/Products.css';
+import ProductCard from '../components/UI/ProductCard/ProductCard';
+import {useSelector} from 'react-redux';
 
 const Products = () => {
-  const { products } = useSelector((state) => state.product);
+  const {products} = useSelector(state => state.product);
 
   /* ------ Variables iniciacion estado ------ */
 
-  const [searchTerm, setSearchTerm] = useState("");
+  const [searchTerm, setSearchTerm] = useState('');
   const [pageNumber, setPageNumber] = useState(0);
 
   /* ------ Accion de filtrado del search ------ */
 
-  const searchedProduct = products.filter((item) => {
-    if (searchTerm.value === "") {
+  const searchedProduct = products.filter(item => {
+    if (searchTerm.value === '') {
       return item;
     }
     if (item.title.toLowerCase().includes(searchTerm.toLowerCase())) {
@@ -31,34 +31,17 @@ const Products = () => {
 
   const productPerPage = 12;
   const visitedPage = pageNumber * productPerPage;
-  const displayPage = searchedProduct.slice(
-    visitedPage,
-    visitedPage + productPerPage
-  );
+  const displayPage = searchedProduct.slice(visitedPage, visitedPage + productPerPage);
   const pageCount = Math.ceil(searchedProduct.length / productPerPage);
 
   /* ------ Seleccion de  ------ */
 
-  const cambiarPagina = ({ selected }) => {
+  const cambiarPagina = ({selected}) => {
     setPageNumber(selected);
   };
 
   return (
     <div>
-      {/* {productos.map((products) => {
-        return (
-          <div>
-            {" "}
-            <p>ID: {products.id}</p>
-            <p>titulo: {products.title}</p>
-            <p>imagen: {products.image}</p>
-            <p>descripcion larga: {products.largeDescription}</p>
-            <p>Precio: {products.price}</p>
-            <p>Descripcion corta: {products.shortDescription}</p>
-            <p>stock: {products.stock}</p>
-          </div>
-        );
-      })} */}
       <section>
         <Container>
           <Row>
@@ -68,7 +51,7 @@ const Products = () => {
                   type="text"
                   placeholder="Buscar producto"
                   value={searchTerm}
-                  onChange={(e) => setSearchTerm(e.target.value)}
+                  onChange={e => setSearchTerm(e.target.value)}
                 />
                 <span>
                   <i className="ri-search-line"></i>
@@ -83,7 +66,7 @@ const Products = () => {
               </div>
             </Col>
 
-            {displayPage.map((item) => (
+            {displayPage.map(item => (
               <Col lg="3" md="4" sm="6" xs="6" key={item.id} className="mb-4">
                 <ProductCard {...item} />
               </Col>
@@ -93,8 +76,8 @@ const Products = () => {
               <ReactPaginate
                 pageCount={pageCount}
                 onPageChange={cambiarPagina}
-                previousLabel={"<Anterior"}
-                nextLabel={"Siguiente >"}
+                previousLabel={'<Anterior'}
+                nextLabel={'Siguiente >'}
                 containerClassName=" paginationBttns "
               />
             </div>
