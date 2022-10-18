@@ -11,7 +11,6 @@ import 'swiper/css/scrollbar';
 
 const Slider = () => {
   const {products} = useSelector(state => state.product);
-  console.log(products);
   //const filtroProductos = products.filter(product => product.stock > 0).slice(0, 9);
   const Limitado = 'Limitado';
   const Disponible = 'Disponible';
