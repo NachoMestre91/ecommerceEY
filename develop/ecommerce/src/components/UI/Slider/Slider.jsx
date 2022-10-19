@@ -24,6 +24,11 @@ const Slider = () => {
           spaceBetween={4}
           slidesPerGroup={2}
           loop={true}
+          breakpoints={{
+            0: {slidesPerview: 1, spaceBetween: 10},
+            480: {slidesPerview: 2, spaceBetween: 10},
+            768: {slidesPerview: 3, spaceBetween: 15},
+          }}
           pagination={{
             clickable: true,
           }}
