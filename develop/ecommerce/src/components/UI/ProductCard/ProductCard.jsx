@@ -49,11 +49,11 @@ export const ProductCard = ({
           <br></br>
           <div className=" d-flex align-items-center mr-1 pr-1 justify-content-between ">
             <Link className="addTOCart__btn" to={`/detalleproducto/${id}`}>
-              <i className="ri-eye-line m-1"></i>
+              <i className="ri-eye-line mr-1"></i>
               Detalle
             </Link>
             <button className="addTOCart__btn" onClick={addToCart}>
-              <i className="ri-bank-card-line m-1"></i>
+              <i className="ri-bank-card-line ml-1"></i>
               Comprar
             </button>
           </div>
