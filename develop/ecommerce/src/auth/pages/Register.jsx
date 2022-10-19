@@ -1,25 +1,21 @@
-import { useDispatch } from "react-redux";
-import { Link } from "react-router-dom";
-import { useForm } from "../../hooks/useForms";
-import { Container, Row, Col } from "reactstrap";
-import "../../assets/css/login.css";
-import { useMemo } from "react";
-import { useSelector } from "react-redux";
-import { startCreatingUserWithEmailPassword } from "../../store/auth/thunks";
+import {useDispatch} from 'react-redux';
+import {Link} from 'react-router-dom';
+import {useForm} from '../../hooks/useForms';
+import {Container, Row, Col} from 'reactstrap';
+import '../../assets/css/login.css';
+import {useMemo} from 'react';
+import {useSelector} from 'react-redux';
+import {startCreatingUserWithEmailPassword} from '../../store/auth/thunks';
 
 const NewRegister = () => {
   const dispatch = useDispatch();
-  const { status } = useSelector((state) => state.auth);
-  const isChekingAuthentication = useMemo(
-    () => status === "checking",
-    [status]
-  );
+  const {status} = useSelector(state => state.auth);
+  const isChekingAuthentication = useMemo(() => status === 'checking', [status]);
 
-  const initialValues = { displayName: "", email: "", password: "" };
-  const { email, displayName, password, handleForm, handleReset, form } =
-    useForm(initialValues);
+  const initialValues = {displayName: '', email: '', password: ''};
+  const {email, displayName, password, handleForm, handleReset, form} = useForm(initialValues);
 
-  const handleSubmit = (e) => {
+  const handleSubmit = e => {
     e.preventDefault();
     handleReset();
     dispatch(startCreatingUserWithEmailPassword(form));

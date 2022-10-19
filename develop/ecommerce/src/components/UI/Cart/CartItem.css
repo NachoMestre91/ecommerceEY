@@ -20,6 +20,11 @@
   font-weight: 600;
   color: #fcd202;
 }
+.cart__item-image {
+  display: flex;
+  align-items: center;
+  place-content: center;
+}
 .Contenedor-items {
   margin: 5%;
   border: 3px solid #fcd2027e !important;

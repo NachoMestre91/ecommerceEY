@@ -1,35 +1,48 @@
 import React, {useState, useEffect} from 'react';
-import products from '../assets/data/Products';
-
 import {useParams} from 'react-router-dom';
-import CommonSection from '../components/UI/common-section/CommonSection';
+import {useDispatch, useSelector} from 'react-redux';
 import {Container, Row, Col} from 'reactstrap';
-//import {cartActions} from '../store/shopping-cart/cartSlice';
-import ProductCard from '../components/UI/ProductCard/ProductCard';
+import {cartActions} from '../store/Slices/cartSlice.js';
+import {Link} from 'react-router-dom';
 import '../assets/css/ProductDetail.css';
-import Helmet from '../components/Helmet/Helmet';
+
 const ProductDetail = () => {
-  //const dispatch = useDispatch();
+  const dispatch = useDispatch();
+
+  const {products} = useSelector(state => state.product);
 
   /* ------ Inicializacion de estados ------ */
 
   const [tab, setTab] = useState('desc');
-  const [enteredName, setEnteredName] = useState('');
-  const [enteredEmail, setEnteredEmail] = useState('');
-  const [reviewMsg, setReviewMsg] = useState('');
 
   /* ------ parametro que trae de detalle ------ */
 
   const {id} = useParams();
 
+  console.log(id);
+
   /* ------ parametro que trae de detalle ------ */
 
   const product = products.find(product => product.id === id);
+  console.log(product);
 
-  const [previewImg, setPreviewImg] = useState(product.image);
-  const {title, price, category, desc, image} = product;
+  const {title, price, image, stock, largeDescription, shortDescription} = product;
+  const [previewImg, setPreviewImg] = useState(image);
 
-  const relatedProduct = products.filter(item => category === item.category);
+  // console.log({title, price, image, stock, largeDesciption, shortDescription});
+
+  // const relatedProduct = products.filter(item => category === item.category);
+
+  const addItem = () => {
+    dispatch(
+      cartActions.addItem({
+        id,
+        title,
+        price,
+        image,
+      })
+    );
+  };
 
   // const submitHandler = e => {
   //   e.preventDefault();
@@ -41,76 +54,50 @@ const ProductDetail = () => {
   //   setPreviewImg(product.image);
   // }, [product]);
 
-  // useEffect(() => {
-  //   window.scrollTo(0, 0);
-  // }, [product]);
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [product]);
 
   return (
-    <Helmet title="Product-details">
-      <CommonSection title={title} />
-
+    <>
       <section>
         <Container>
           <Row>
             <Col lg="4" md="4">
-              <div className="product__main-img">
-                <img src={previewImg} alt="" className="w-100" />
+              <div className="product__main-img product__item">
+                <img src={previewImg} alt="" className="w-50" />
               </div>
+              <br></br>
+              <div className="product_stock ">
+                <h2 className="product__price text-center">Precio: ${price}</h2>
+                <h2 className="product__price text-center">Stock: {stock}</h2>
+              </div>
+              <br></br>
             </Col>
 
             <Col lg="6" md="6">
               <div className="single__product-content">
-                <h2 className="product__title mb-3">{title}</h2>
-                <p className="product__price">
-                  {' '}
-                  Price: <span>${price}</span>
-                </p>
-                <p className="category mb-5">
-                  <p>{desc}</p>
-                </p>
+                <h2 className="product__title mb-3">{product.title}</h2>
+                <Col lg="12">
+                  <p> {shortDescription}</p>
 
-                <button className="addTOCart__btn">Comprar</button>
+                  <h6>Descripcion</h6>
+                  <p>{largeDescription}</p>
+                </Col>
               </div>
-            </Col>
-
-            <Col lg="12">
-              <div className="tabs d-flex align-items-center gap-5 py-3">
-                <h6
-                  className={` ${tab === 'desc' ? 'tab__active' : ''}`}
-                  onClick={() => setTab('desc')}
-                >
-                  Descripcion corta
-                </h6>
-                <h6
-                  className={` ${tab === 'rev' ? 'tab__active' : ''}`}
-                  onClick={() => setTab('rev')}
-                >
-                  Descripcion larga
-                </h6>
-              </div>
-
-              {tab === 'desc' ? (
-                <div className="tab__content">
-                  <p>{desc}</p>
-                </div>
-              ) : (
-                <div className="tab__form mb-3">No se encontro descripcion</div>
-              )}
-            </Col>
-
-            <Col lg="12" className="mb-5 mt-4">
-              <h2 className="related__Product-title">Otros cursos</h2>
-            </Col>
-
-            {relatedProduct.map(item => (
-              <Col lg="3" md="4" sm="6" xs="6" className="mb-4" key={item.id}>
-                <ProductCard item={item} />
+              <Col lg="12" className="detail-action ">
+                <button className="addTOCart__btn" onClick={addItem}>
+                  Agregar
+                </button>
+                <button className="volver__btn me-4">
+                  <Link to="/home">Volver</Link>
+                </button>
               </Col>
-            ))}
+            </Col>
           </Row>
         </Container>
       </section>
-    </Helmet>
+    </>
   );
 };
 

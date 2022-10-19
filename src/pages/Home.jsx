@@ -11,6 +11,7 @@ import products from '../assets/fake-data/products.js';
 // import ProductCard from '../components/UI/product-card/ProductCard.jsx';
 
 import Productos from './Productos';
+import Sliders from '../components/UI/slider/Slider';
 
 import '../assets/css/hero-section.css';
 import '../assets/css/home.css';
@@ -62,16 +63,8 @@ const Home = () => {
         <Container>
           <Row>
             <Col lg="12" md="12">
-              <p className=" d-flex align-items-center gap-2 ">
-                <span style={{color: '#fcd202'}}>Banner slider</span>
-              </p>
-
-              <div className="hero__img">
-                <img src={bannerImg} alt="hero-img" className="w-100" />
-              </div>
+              <Sliders />
             </Col>
-
-            <Col lg="6" md="6"></Col>
           </Row>
         </Container>
       </section>
