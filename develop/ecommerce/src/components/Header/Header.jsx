@@ -61,13 +61,13 @@ const Header = () => {
         <Container>
           <div className="nav__wrapper d-flex align-items-center justify-content-between">
             <div className="logo">
-              {/* <Link to="/home"> */}
-              <img src={logo} alt="logo" />
-              {/* </Link> */}
+              <Link to="/home">
+                <img src={logo} alt="logo" />
+              </Link>
             </div>
 
             {/* ======= menu ======= */}
-            <div className="navigation" ref={menuRef} onClick={toggleMenu}>
+            {/* <div className="navigation" ref={menuRef} onClick={toggleMenu}>
               <div className="menu d-flex align-items-center gap-5">
                 {nav_menu.map((item, index) => (
                   <NavLink
@@ -79,7 +79,7 @@ const Header = () => {
                   </NavLink>
                 ))}
               </div>
-            </div>
+            </div> */}
 
             {/* ======== nav right icons ========= */}
             <div className="nav__right d-flex align-items-center gap-4">
