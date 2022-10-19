@@ -48,7 +48,7 @@ const Carts = () => {
               Total : <span>${totalAmount}</span>
             </h6>
             <button>
-              <Link to="/checkout" onClick={toggleCart}>
+              <Link to="/cart" onClick={toggleCart}>
                 Confirmar
               </Link>
             </button>
