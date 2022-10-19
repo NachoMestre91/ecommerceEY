@@ -67,7 +67,7 @@ const Products = () => {
             </Col>
 
             {displayPage.map(item => (
-              <ProductCard {...item} />
+              <ProductCard key={item.id} {...item} />
             ))}
 
             <div>
