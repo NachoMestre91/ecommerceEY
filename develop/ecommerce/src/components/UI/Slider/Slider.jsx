@@ -1,5 +1,5 @@
 import React from 'react';
-import {Pagination, Navigation} from 'swiper';
+import {Pagination, Navigation, Autoplay} from 'swiper';
 import {Swiper, SwiperSlide} from 'swiper/react';
 import {useSelector} from 'react-redux';
 // import SliderItem from './SliderItem';
@@ -19,6 +19,7 @@ const Slider = () => {
     <>
       <div className="Contenedor-slider-item">
         <Swiper
+          modules={[Pagination, Navigation, Autoplay]}
           slidesPerView={4}
           spaceBetween={4}
           slidesPerGroup={2}
@@ -27,7 +28,10 @@ const Slider = () => {
             clickable: true,
           }}
           navigation={true}
-          modules={[Pagination, Navigation]}
+          autoplay={{
+            delay: 2500,
+            disableOnInteraction: true,
+          }}
         >
           {products.map(product => (
             <SwiperSlide key={product.id}>

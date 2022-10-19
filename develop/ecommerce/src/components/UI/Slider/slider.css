@@ -11,6 +11,7 @@
   margin: 5px;
 }
 .img-slider {
+  padding: 40px;
   width: 200px;
   height: 200px;
   object-fit: contain;
@@ -36,7 +37,7 @@
   margin: 5px;
   padding: 5px;
   background: #fcd202;
-  color: #000000;
+  color: #f8f8f8;
   font-size: 0.9rem;
   display: flex;
   align-items: center;
