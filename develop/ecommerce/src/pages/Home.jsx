@@ -1,6 +1,6 @@
 import React from 'react';
 import {Container, Row, Col, ListGroup, ListGroupItem} from 'reactstrap';
-import bannerImg from '../assets/images/banner-02.gif';
+import bannerImg from '../assets/images/banner-02.jpg';
 import '../assets/css/Home.css';
 import Slider from '../components/UI/Slider/Slider';
 import Productos from '../pages/Products';
@@ -18,6 +18,9 @@ const Home = () => {
           </Row>
         </Container>
       </section>
+      {/* <section className="Fondo-banner">
+        <img src={bannerImg}></img>
+      </section> */}
 
       <section className="pt-0">
         <Productos />
