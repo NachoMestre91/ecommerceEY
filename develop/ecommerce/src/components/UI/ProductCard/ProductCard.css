@@ -44,6 +44,13 @@
   color: #21242d;
   font-size: 0.9rem;
 }
+.addTOCart__btn:hover {
+  border: none;
+  padding: 7px 25px;
+  background: #555454;
+  color: #ffffff;
+  font-size: 0.9rem;
+}
 
 @media only screen and (max-width: 992px) {
   .product__content h5 a {

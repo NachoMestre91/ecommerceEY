@@ -40,7 +40,7 @@ const Slider = () => {
         >
           {products.map(product => (
             <SwiperSlide key={product.id}>
-              <div className="slider-item  product__item">
+              <div className="slider-item  product__item filter-drop">
                 <img className="img-slider" src={product.image} alt=""></img>
                 <h6 style={{color: '#fcd202'}}>{product.title}</h6>
                 <h6 style={{color: '#fcd202'}}>stock: {product.stock}</h6>

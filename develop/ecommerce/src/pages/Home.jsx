@@ -9,7 +9,7 @@ import Sliders from '../components/UI/Slider/Slider';
 const Home = () => {
   return (
     <>
-      <section className="Fondo-banner">
+      <section className="Fondo-banner Fondo-Inicio">
         <Container>
           <Row>
             <Col lg="12" md="12">

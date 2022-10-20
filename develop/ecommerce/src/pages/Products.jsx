@@ -67,15 +67,23 @@ const Products = () => {
             </Col>
 
             {displayPage.map(item => (
-              <ProductCard {...item} />
+              <ProductCard key={item.id} {...item} />
             ))}
 
             <div>
               <ReactPaginate
                 pageCount={pageCount}
                 onPageChange={cambiarPagina}
-                previousLabel={'<Anterior'}
-                nextLabel={'Siguiente >'}
+                previousLabel={
+                  <div>
+                    <i className="ri-arrow-left-s-line "></i>
+                  </div>
+                }
+                nextLabel={
+                  <div>
+                    <i className="ri-arrow-right-s-line  "></i>
+                  </div>
+                }
                 containerClassName=" paginationBttns "
               />
             </div>

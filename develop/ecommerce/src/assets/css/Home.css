@@ -13,6 +13,20 @@
 .feature__item p {
   color: #777;
 }
+.Fondo-Inicio {
+  width: 100%;
+  height: auto;
+  background-image: url('../images/banner-001.jpg');
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+.Fondo-footer {
+  width: 100%;
+  height: 300px;
+  background-image: url('../images/banner-02.jpg');
+  background-repeat: no-repeat;
+  background-size: cover;
+}
 
 .food__category {
   background: #fcd202;

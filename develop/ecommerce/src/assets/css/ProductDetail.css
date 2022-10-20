@@ -27,6 +27,11 @@
   color: #ffffff;
   font-size: 0.9rem;
 }
+.volver__btn:hover {
+  background: #fcd202;
+  color: #000000;
+}
+
 .category {
   font-weight: 600;
   color: #212245;
