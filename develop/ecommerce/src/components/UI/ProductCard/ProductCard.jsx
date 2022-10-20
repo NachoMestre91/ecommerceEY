@@ -46,17 +46,17 @@ export const ProductCard = ({
                 <h5>{shortDescription}</h5>
               </div>
               <div className="product_stock">
-                <span className="product__price text-center">${price}</span>
-                <span className="product__price text-center">Stock: {stock}</span>
+                <span className=" product__price text-center">${price}</span>
+                <span className=" product__price text-center">Stock: {stock}</span>
               </div>
               <br></br>
-              <div className=" d-flex align-items-center mr-1 pr-1 justify-content-between ">
-                <Link className="addTOCart__btn" to={`/detalleproducto/${id}`}>
-                  <i className="ri-eye-line mr-1"></i>
+              <div className=" d-flex align-items-center  mr-1 pr-2 justify-content-between ">
+                <Link className="addTOCart__btn me-2" to={`/detalleproducto/${id}`}>
+                  <i className="ri-eye-line me-2"></i>
                   Detalle
                 </Link>
                 <button className="addTOCart__btn" onClick={addToCart}>
-                  <i className="ri-bank-card-line ml-1"></i>
+                  <i className="ri-bank-card-line me-2"></i>
                   Agregar
                 </button>
               </div>

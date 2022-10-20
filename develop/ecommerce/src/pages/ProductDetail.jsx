@@ -85,7 +85,7 @@ const ProductDetail = () => {
                   <p>{largeDescription}</p>
                 </Col>
               </div>
-              <Col lg="12" className="detail-action ">
+              <Col lg="12" className="detail-action  cart__page-btn">
                 <button className="addTOCart__btn" onClick={addItem}>
                   Agregar
                 </button>

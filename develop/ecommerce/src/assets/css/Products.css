@@ -7,10 +7,25 @@
 }
 .search__widget input {
   border: none;
+  width: 100%;
 }
 
 .search__widget input:focus {
   outline: none;
+  width: 100%;
+}
+
+.seccion-sticky {
+  display: flex;
+  height: 80px;
+  box-shadow: rgba(100, 100, 111, 0.2) 5px 5px 15px -10px;
+  background-color: #fcfcfc;
+  align-items: center;
+  top: 80px;
+  place-content: center;
+  position: sticky;
+  z-index: 100;
+  margin-bottom: 30px;
 }
 
 @media only screen and (max-width: 768px) {

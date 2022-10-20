@@ -15,20 +15,19 @@ const Slider = () => {
   const Limitado = 'Limitado';
   const Disponible = 'Disponible';
 
+  const userAgent = navigator.userAgent;
+  const isMobileIPhone = userAgent.indexOf('iPhone');
+  const isMobileAndroid = userAgent.indexOf('Android');
+
   return (
     <>
       <div className="Contenedor-slider-item">
         <Swiper
           modules={[Pagination, Navigation, Autoplay]}
-          slidesPerView={4}
+          slidesPerView={isMobileAndroid !== -1 || isMobileIPhone !== -1 ? 1 : 4}
           spaceBetween={4}
           slidesPerGroup={2}
           loop={true}
-          breakpoints={{
-            0: {slidesPerview: 1, spaceBetween: 10},
-            480: {slidesPerview: 2, spaceBetween: 10},
-            768: {slidesPerview: 3, spaceBetween: 15},
-          }}
           pagination={{
             clickable: true,
           }}
@@ -40,7 +39,7 @@ const Slider = () => {
         >
           {products.map(product => (
             <SwiperSlide key={product.id}>
-              <div className="slider-item  product__item">
+              <div className="slider-item  product__item align-items-center filter-drop">
                 <img className="img-slider" src={product.image} alt=""></img>
                 <h6 style={{color: '#fcd202'}}>{product.title}</h6>
                 <h6 style={{color: '#fcd202'}}>stock: {product.stock}</h6>

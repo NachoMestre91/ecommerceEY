@@ -7,13 +7,16 @@ import './Footer.css';
 const Footer = () => {
   return (
     <div>
-      <footer className="footer">
+      <div className="Line-footer">
+        <br></br>
+      </div>
+      <footer className="footer Fondo-footer ">
         <Container>
           <Row>
             <Col lg="3" md="4" sm="6">
-              <div className=" footer__logo text-start">
+              {/* <div className=" footer__logo text-start">
                 <img src={logo} alt="logo" />
-              </div>
+              </div> */}
             </Col>
 
             <Col lg="3" md="4" sm="4"></Col>

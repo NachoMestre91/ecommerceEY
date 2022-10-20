@@ -37,7 +37,7 @@
   margin: 5px;
   padding: 5px;
   background: #fcd202;
-  color: #f8f8f8;
+  color: #000000;
   font-size: 0.9rem;
   display: flex;
   align-items: center;
@@ -87,6 +87,16 @@
   background-color: #fcd202;
   z-index: 9;
   border-radius: 50%;
+}
+.filter-drop {
+  box-shadow: 0 0 8px 8px left to right rgba(3, 3, 3, 0.479) inset;
+  -webkit-box-shadow: 12px 29px 81px 0px rgba(0, 0, 0, 0.603);
+  backdrop-filter: blur(3px);
+  -webkit-backdrop-filter: blur(3px);
+  -moz-backdrop-filter: blur(3px);
+  -o-backdrop-filter: blur(3px);
+  box-shadow: rgb(252, 210, 2, 0.1) 0px 4px 4px, rgb(252, 210, 2, 0.1) 0px 6px 25px,
+    rgb(252, 210, 2, 0.1) 0px 4px 4px;
 }
 .swiper-button-next:hover {
   display: flex;
