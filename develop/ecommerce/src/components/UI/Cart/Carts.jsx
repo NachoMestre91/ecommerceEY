@@ -37,7 +37,9 @@ const Carts = () => {
 
           <div className="cart__item-list">
             {cartProducts.length === 0 ? (
-              <h6 className="text-center mt-5">Ningún artículo añadido al carrito</h6>
+              <h6 className="text-center mt-5" style={{color: '#fcd202'}}>
+                Ningún artículo añadido al carrito
+              </h6>
             ) : (
               cartProducts.map((item, index) => <CartItem item={item} key={index} />)
             )}

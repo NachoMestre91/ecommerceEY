@@ -25,6 +25,7 @@ export const ProductCard = ({
         price,
         largeDesciption,
         shortDescription,
+        stock,
       })
     );
   };

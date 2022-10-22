@@ -28,6 +28,7 @@ const cartSlice = createSlice({
           largeDescription: newItem.largeDescription,
           quantity: 1,
           totalPrice: newItem.price,
+          stock: newItem.stock,
         });
       } else {
         existingItem.quantity++;
