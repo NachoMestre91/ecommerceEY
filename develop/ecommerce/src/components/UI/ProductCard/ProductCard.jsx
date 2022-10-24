@@ -4,6 +4,7 @@ import {useDispatch} from 'react-redux';
 import './ProductCard.css';
 import {cartActions} from '../../../store/Slices/cartSlice.js';
 import {Col} from 'react-bootstrap';
+import {useSelector} from 'react-redux';
 
 export const ProductCard = ({
   id,
@@ -13,25 +14,33 @@ export const ProductCard = ({
   shortDescription,
   largeDesciption,
   stock,
-  quantity,
 }) => {
+  const {cartItems} = useSelector(state => state.cart);
+
   const dispatch = useDispatch();
 
-  // console.log('stock:', stock);
-  // console.log('cantidad:', cantidad);
-
   const addToCart = () => {
-    dispatch(
-      cartActions.addItem({
-        id,
-        title,
-        image,
-        price,
-        largeDesciption,
-        shortDescription,
-        stock,
-      })
-    );
+    const cantidad = cartItems?.find(product => product.id === id);
+
+    const newStock = stock - 1;
+
+    console.log(newStock);
+
+    const cantidaditem = cantidad?.quantity;
+
+    if (cantidaditem <= newStock || !cantidaditem) {
+      dispatch(
+        cartActions.addItem({
+          id,
+          title,
+          image,
+          price,
+          largeDesciption,
+          shortDescription,
+          stock,
+        })
+      );
+    }
   };
 
   return (
@@ -60,7 +69,7 @@ export const ProductCard = ({
                   <i className="ri-eye-line me-2"></i>
                   Detalle
                 </Link>
-                {/* {stock >= cantidad ? ( */}
+
                 <button className="addTOCart__btn" onClick={addToCart}>
                   <i className="ri-bank-card-line me-2"></i>
                   Agregar

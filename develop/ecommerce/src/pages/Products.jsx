@@ -31,7 +31,9 @@ const Products = () => {
 
   const productPerPage = 12;
   const visitedPage = pageNumber * productPerPage;
+
   const displayPage = searchedProduct.slice(visitedPage, visitedPage + productPerPage);
+
   const pageCount = Math.ceil(searchedProduct.length / productPerPage);
 
   /* ------ Seleccion de  ------ */

@@ -10,8 +10,41 @@ import Cart from '../pages/Cart';
 import Checkout from '../pages/Checkout';
 import NewLogin from '../auth/pages/Login';
 import NewRegister from '../auth/pages/Register';
+import {useSelector} from 'react-redux';
+
+const RutaPrivada = () => {
+  const {cartItems} = useSelector(state => state.cart);
+  console.log(cartItems.length);
+  return (
+    <Routes>
+      {cartItems.length > 0 ? (
+        <Route path="/" element={<Cart />} />
+      ) : (
+        <Route path="/" element={<Navigate to="/home" />} />
+      )}
+    </Routes>
+  );
+};
+
+const LoginSesion = () => {
+  const {status} = useSelector(state => state.auth);
+
+  return (
+    <Routes>
+      {status !== 'authenticated' ? (
+        <Route path="/" element={<NewLogin />} />
+      ) : (
+        <Route path="/" element={<Navigate to="/home" />} />
+      )}
+    </Routes>
+  );
+};
 
 const Routers = () => {
+  const {status} = useSelector(state => state.auth);
+
+  console.log(status);
+
   /* ------ Falta armar logica ruteo------ */
 
   return (
@@ -20,9 +53,19 @@ const Routers = () => {
       <Route path="/home" element={<Home />} />
       <Route path="/detalleproducto" element={<Products />} />
       <Route path="/detalleproducto/:id" element={<ProductDetail />} />
-      <Route path="/cart" element={<Cart />} />
+
+      {status === 'authenticated' && <Route path="/cart" element={<RutaPrivada />} />}
+
+      {status === 'authenticated' ? (
+        <Route path="/login" element={<RutaPrivada />} />
+      ) : (
+        <Route path="/cart" element={<Navigate to="/login" />} />
+      )}
+
       <Route path="/checkout" element={<Checkout />} />
-      <Route path="/login" element={<NewLogin />} />
+
+      <Route path="/login" element={<LoginSesion />} />
+
       <Route path="/register" element={<NewRegister />} />
     </Routes>
   );
