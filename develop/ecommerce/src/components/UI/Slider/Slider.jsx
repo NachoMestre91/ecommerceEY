@@ -27,8 +27,6 @@ const Slider = () => {
 
   const filtroProductos = products.filter(product => product.stock > 0).slice(0, 10);
 
-  console.log(filtroProductos);
-
   return (
     <>
       <div className="Contenedor-slider-item">

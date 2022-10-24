@@ -11,8 +11,6 @@ const CartItem = ({item}) => {
 
   const {id, title, price, image, quantity, totalPrice, largeDesciption, shortDescription} = item;
 
-  // console.log('itemStoc:', item.stock);
-  // console.log('stock producto', stockProducto);
   /* ------ Agregar cantidad Item ------ */
 
   const incrementItem = () => {
@@ -75,6 +73,7 @@ const CartItem = ({item}) => {
                   </span>
                 </div>
               </div>
+
               {quantity >= stockProducto ? (
                 <div className="cartel-sin-stock">
                   <h6 className="text-center mt-5">Sin cantidad</h6>
