@@ -11,13 +11,21 @@ import 'swiper/css/scrollbar';
 
 const Slider = () => {
   const {products} = useSelector(state => state.product);
-  //const filtroProductos = products.filter(product => product.stock > 0).slice(0, 9);
+
+  /* ----- Variables de disponibilidad segun stock ----- */
+
   const Limitado = 'Limitado';
   const Disponible = 'Disponible';
+
+  /* ----- UserAgent responsive slider ----- */
 
   const userAgent = navigator.userAgent;
   const isMobileIPhone = userAgent.indexOf('iPhone');
   const isMobileAndroid = userAgent.indexOf('Android');
+
+  /* ----- Filtro Productos ----- */
+
+  const filtroProductos = products.filter(product => product.stock > 0).slice(0, 10);
 
   return (
     <>
@@ -37,7 +45,7 @@ const Slider = () => {
             disableOnInteraction: true,
           }}
         >
-          {products.map(product => (
+          {filtroProductos.map(product => (
             <SwiperSlide key={product.id}>
               <div className="slider-item  product__item align-items-center filter-drop">
                 <img className="img-slider" src={product.image} alt=""></img>
