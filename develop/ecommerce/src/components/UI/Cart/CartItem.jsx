@@ -5,14 +5,14 @@ import {cartActions} from '../../../store/Slices/cartSlice.js';
 import './CartItem.css';
 
 const CartItem = ({item}) => {
-  const stockProducto = item.stock;
-
   const dispatch = useDispatch();
+
+  const stockProducto = item.stock;
 
   const {id, title, price, image, quantity, totalPrice, largeDesciption, shortDescription} = item;
 
-  console.log('itemStoc:', item.stock);
-  console.log('stock producto', stockProducto);
+  // console.log('itemStoc:', item.stock);
+  // console.log('stock producto', stockProducto);
   /* ------ Agregar cantidad Item ------ */
 
   const incrementItem = () => {
