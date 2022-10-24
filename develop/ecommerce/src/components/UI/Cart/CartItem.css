@@ -14,6 +14,15 @@
   font-size: 0.8rem;
   color: #fcd202;
 }
+.cartel-sin-stock {
+  display: flex;
+  align-items: center;
+  place-content: center;
+}
+.cartel-sin-stock h6 {
+  color: #fcd202;
+  font-size: 14px;
+}
 
 .cart__product-price span {
   font-size: 0.9rem;
@@ -47,7 +56,7 @@
   padding: 2px 5px;
   border-radius: 5px;
 }
-. .increase__btn,
+.increase__btn,
 .decrease__btn {
   cursor: pointer;
 }

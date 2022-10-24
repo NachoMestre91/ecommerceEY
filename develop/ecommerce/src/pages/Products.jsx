@@ -64,27 +64,6 @@ const Products = () => {
         </div>
         <Container>
           <Row>
-            {/*<Col lg="6" md="6" sm="6" xs="12">
-              <div className="search__widget d-flex align-items-center justify-content-between ">
-                <input
-                  type="text"
-                  placeholder="Buscar producto"
-                  value={searchTerm}
-                  onChange={e => setSearchTerm(e.target.value)}
-                />
-                <span>
-                  <i className="ri-search-line"></i>
-                </span>
-              </div> 
-            </Col>
-            <Col lg="6" md="6" sm="6" xs="12" className="mb-5">
-              <div className="sorting__widget text-end">
-                <select className="w-50">
-                  <option>Stock</option>
-                </select>
-              </div>
-            </Col>*/}
-
             {displayPage.map(item => (
               <ProductCard key={item.id} {...item} />
             ))}
