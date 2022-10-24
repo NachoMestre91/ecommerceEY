@@ -13,8 +13,12 @@ export const ProductCard = ({
   shortDescription,
   largeDesciption,
   stock,
+  quantity,
 }) => {
   const dispatch = useDispatch();
+
+  // console.log('stock:', stock);
+  // console.log('cantidad:', cantidad);
 
   const addToCart = () => {
     dispatch(
@@ -56,10 +60,19 @@ export const ProductCard = ({
                   <i className="ri-eye-line me-2"></i>
                   Detalle
                 </Link>
+                {/* {stock >= cantidad ? ( */}
                 <button className="addTOCart__btn" onClick={addToCart}>
                   <i className="ri-bank-card-line me-2"></i>
                   Agregar
                 </button>
+                {/* ) : (
+                  <>
+                     <>
+                    <p>sub tco</p>
+                    <button className="volver__btn">agregar</button>
+                  </> */}
+                {/* </>
+                )} */}
               </div>
             </div>
           </div>

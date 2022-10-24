@@ -23,9 +23,11 @@ const Slider = () => {
   const isMobileIPhone = userAgent.indexOf('iPhone');
   const isMobileAndroid = userAgent.indexOf('Android');
 
-  /* ----- Filtro Productos ----- */
+  /* ----- UserAgent responsive slider ----- */
 
   const filtroProductos = products.filter(product => product.stock > 0).slice(0, 10);
+
+  console.log(filtroProductos);
 
   return (
     <>
