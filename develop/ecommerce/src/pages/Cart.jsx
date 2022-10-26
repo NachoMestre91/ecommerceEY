@@ -3,18 +3,54 @@ import {Container, Row, Col} from 'reactstrap';
 import {Link} from 'react-router-dom';
 import {useSelector, useDispatch} from 'react-redux';
 import '../assets/css/Cart.css';
-
+import {addDoc, collection, getFirestore} from 'firebase/firestore';
+import {initializeApp} from 'firebase/app';
 import {cartActions} from '../store/Slices/cartSlice.js';
+import {firebaseConfig} from '../firebase/firebaseConfig';
+import {useNavigate} from 'react-router-dom';
 
 const Cart = () => {
-  const totalAmount = useSelector(state => state.cart.totalAmount);
+  /* ------ Get Monto total y Items del carrito  ------ */
 
+  const totalAmount = useSelector(state => state.cart.totalAmount);
   const {cartItems} = useSelector(state => state.cart);
+
+  const {status} = useSelector(state => state.auth);
+
+  /* ------ Funcion realizar compra ------ */
+
+  // const dispatch = useDispatch();
+  // const navigate = useNavigate();
+
+  // const realizarCompra = async () => {
+  //   const db = getFirestore(initializeApp(firebaseConfig));
+
+  //   const date = new Date().toLocaleDateString();
+
+  //   const buyer = {
+  //     email: status.email,
+  //     name: status.displayName?.displayName || '',
+  //     phone: '',
+  //     date: date,
+  //     items: cartItems,
+  //   };
+
+  //   try {
+  //     const docRef = await addDoc(collection(db, 'buyer'), buyer);
+  //     console.log('Document written with ID: ', docRef.id);
+
+  //     navigate('/');
+  //   } catch (e) {
+  //     console.error('No se guardo el documento: ', e);
+  //   }
+  // };
 
   return (
     <>
       <section>
-        <h5 className="text-center">Listado de tu compra</h5>
+        <h2 className="text-black text-center">Listado de tu compra</h2>
+
+        <h5 className="text-center">Listado de productos seleccionados</h5>
         <br></br>
         <Container>
           <Row>
