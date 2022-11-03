@@ -9,7 +9,7 @@ const Checkout = () => {
   const { totalQuantity, totalAmount } = useSelector((state) => state.cart);
   const { buyer } = useSelector((state) => state.buyer);
   const { name, email, date, items, id } = buyer;
-  console.log(items);
+
   return (
     <>
       {buyer && (

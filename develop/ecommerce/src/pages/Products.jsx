@@ -1,23 +1,23 @@
-import {useState} from 'react';
-import {Container, Row, Col} from 'reactstrap';
-import ReactPaginate from 'react-paginate';
-import '../assets/css/pagination.css';
-import '../assets/css/Products.css';
-import ProductCard from '../components/UI/ProductCard/ProductCard';
-import {useSelector} from 'react-redux';
+import { useState } from "react";
+import { Container, Row, Col } from "reactstrap";
+import ReactPaginate from "react-paginate";
+import "../assets/css/pagination.css";
+import "../assets/css/Products.css";
+import ProductCard from "../components/UI/ProductCard/ProductCard";
+import { useSelector } from "react-redux";
 
 const Products = () => {
-  const {products} = useSelector(state => state.product);
+  const { products } = useSelector((state) => state.product);
 
   /* ------ Variables iniciacion estado ------ */
 
-  const [searchTerm, setSearchTerm] = useState('');
+  const [searchTerm, setSearchTerm] = useState("");
   const [pageNumber, setPageNumber] = useState(0);
 
   /* ------ Accion de filtrado del search ------ */
 
-  const searchedProduct = products.filter(item => {
-    if (searchTerm.value === '') {
+  const searchedProduct = products.filter((item) => {
+    if (searchTerm.value === "") {
       return item;
     }
     if (item.title.toLowerCase().includes(searchTerm.toLowerCase())) {
@@ -32,13 +32,16 @@ const Products = () => {
   const productPerPage = 12;
   const visitedPage = pageNumber * productPerPage;
 
-  const displayPage = searchedProduct.slice(visitedPage, visitedPage + productPerPage);
+  const displayPage = searchedProduct.slice(
+    visitedPage,
+    visitedPage + productPerPage
+  );
 
   const pageCount = Math.ceil(searchedProduct.length / productPerPage);
 
   /* ------ Seleccion de  ------ */
 
-  const cambiarPagina = ({selected}) => {
+  const cambiarPagina = ({ selected }) => {
     setPageNumber(selected);
   };
 
@@ -46,7 +49,9 @@ const Products = () => {
     <div>
       <section>
         <h2 className="text-black text-center">Nuestros cursos</h2>
-        <p className="text-black text-center">Selecciona el curso que quieras</p>
+        <p className="text-black text-center">
+          Selecciona el curso que quieras
+        </p>
         <div className="common__section seccion-sticky">
           <Col lg="6" md="6" sm="6" xs="12">
             <Container>
@@ -55,7 +60,7 @@ const Products = () => {
                   type="text"
                   placeholder="Buscar producto"
                   value={searchTerm}
-                  onChange={e => setSearchTerm(e.target.value)}
+                  onChange={(e) => setSearchTerm(e.target.value)}
                 />
                 <span>
                   <i className="ri-search-line"></i>
@@ -66,7 +71,7 @@ const Products = () => {
         </div>
         <Container>
           <Row>
-            {displayPage.map(item => (
+            {displayPage.map((item) => (
               <ProductCard key={item.id} {...item} />
             ))}
 
