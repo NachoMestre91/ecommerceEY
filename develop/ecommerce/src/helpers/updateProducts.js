@@ -38,6 +38,7 @@ export const updateProducts = () => {
     });
     const newProducts = [...deleteArray, ...products];
     const update = removeDuplicates(newProducts);
+    console.log(update);
     const object = Object.assign({}, update);
     // const collectionRef = collection(db, "newproducts");
     // const docs = await getDocs(collectionRef);

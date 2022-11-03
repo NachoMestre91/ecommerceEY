@@ -1,6 +1,7 @@
 import { collection, doc, setDoc } from "firebase/firestore/lite";
 import { db } from "../firebase/firebaseConfig";
 import { createComprador } from "../store/Buyer/buyerSlice";
+import { startLoadingNotes } from "../store/Product/thunks";
 import { cartActions } from "../store/Slices/cartSlice";
 import { updateProducts } from "./updateProducts";
 
@@ -23,7 +24,8 @@ export const createBuyer = () => {
 
     newBuyer.id = newDoc.id;
     dispatch(createComprador(newBuyer));
-    dispatch(cartActions.clearCart());
     dispatch(updateProducts());
+    dispatch(cartActions.clearCart());
+    dispatch(startLoadingNotes());
   };
 };
