@@ -1,10 +1,10 @@
-import React from 'react';
-import {Link} from 'react-router-dom';
-import {useDispatch} from 'react-redux';
-import './ProductCard.css';
-import {cartActions} from '../../../store/Slices/cartSlice.js';
-import {Col} from 'react-bootstrap';
-import {useSelector} from 'react-redux';
+import React from "react";
+import { Link } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import "./ProductCard.css";
+import { cartActions } from "../../../store/Slices/cartSlice.js";
+import { Col } from "react-bootstrap";
+import { useSelector } from "react-redux";
 
 export const ProductCard = ({
   id,
@@ -12,19 +12,17 @@ export const ProductCard = ({
   image,
   price,
   shortDescription,
-  largeDesciption,
+  largeDescription,
   stock,
 }) => {
-  const {cartItems} = useSelector(state => state.cart);
+  const { cartItems } = useSelector((state) => state.cart);
 
   const dispatch = useDispatch();
 
   const addToCart = () => {
-    const cantidad = cartItems?.find(product => product.id === id);
+    const cantidad = cartItems?.find((product) => product.id === id);
 
     const newStock = stock - 1;
-
-    console.log(newStock);
 
     const cantidaditem = cantidad?.quantity;
 
@@ -35,7 +33,7 @@ export const ProductCard = ({
           title,
           image,
           price,
-          largeDesciption,
+          largeDescription,
           shortDescription,
           stock,
         })
@@ -61,11 +59,16 @@ export const ProductCard = ({
               </div>
               <div className="product_stock">
                 <span className=" product__price text-center">${price}</span>
-                <span className=" product__price text-center">Stock: {stock}</span>
+                <span className=" product__price text-center">
+                  Stock: {stock}
+                </span>
               </div>
               <br></br>
               <div className=" d-flex align-items-center  mr-1 pr-2 justify-content-between ">
-                <Link className="addTOCart__btn me-2" to={`/detalleproducto/${id}`}>
+                <Link
+                  className="addTOCart__btn me-2"
+                  to={`/detalleproducto/${id}`}
+                >
                   <i className="ri-eye-line me-2"></i>
                   Detalle
                 </Link>

@@ -1,21 +1,21 @@
-import React, {useState} from 'react';
-import {ListGroup} from 'reactstrap';
-import {Link} from 'react-router-dom';
-import logo from '../../../assets/images/isologo.png';
-import CartItem from './CartItem';
+import React, { useState } from "react";
+import { ListGroup } from "reactstrap";
+import { Link } from "react-router-dom";
+import logo from "../../../assets/images/isologo.png";
+import CartItem from "./CartItem";
 
-import {useDispatch, useSelector} from 'react-redux';
-import {toggle} from '../../../store/Slices/cartUiSlice.js';
+import { useDispatch, useSelector } from "react-redux";
+import { toggle } from "../../../store/Slices/cartUiSlice.js";
 
-import './Carts.css';
+import "./Carts.css";
 
 const Carts = () => {
   const dispatch = useDispatch();
 
   /* ------ Redux Selector item y total ------ */
 
-  const cartProducts = useSelector(state => state.cart.cartItems);
-  const totalAmount = useSelector(state => state.cart.totalAmount);
+  const cartProducts = useSelector((state) => state.cart.cartItems);
+  const totalAmount = useSelector((state) => state.cart.totalAmount);
 
   const toggleCart = () => {
     dispatch(toggle());
@@ -37,11 +37,13 @@ const Carts = () => {
 
           <div className="cart__item-list">
             {cartProducts.length === 0 ? (
-              <h6 className="text-center mt-5" style={{color: '#fcd202'}}>
+              <h6 className="text-center mt-5" style={{ color: "#fcd202" }}>
                 Ningún artículo añadido al carrito
               </h6>
             ) : (
-              cartProducts.map((item, index) => <CartItem item={item} key={index} />)
+              cartProducts.map((item, index) => (
+                <CartItem item={item} key={index} />
+              ))
             )}
           </div>
 

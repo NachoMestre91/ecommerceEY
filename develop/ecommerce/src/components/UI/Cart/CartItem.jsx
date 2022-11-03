@@ -1,15 +1,24 @@
-import React from 'react';
-import {ListGroupItem} from 'reactstrap';
-import {useDispatch} from 'react-redux';
-import {cartActions} from '../../../store/Slices/cartSlice.js';
-import './CartItem.css';
+import React from "react";
+import { ListGroupItem } from "reactstrap";
+import { useDispatch } from "react-redux";
+import { cartActions } from "../../../store/Slices/cartSlice.js";
+import "./CartItem.css";
 
-const CartItem = ({item}) => {
+const CartItem = ({ item }) => {
   const dispatch = useDispatch();
 
   const stockProducto = item.stock;
 
-  const {id, title, price, image, quantity, totalPrice, largeDesciption, shortDescription} = item;
+  const {
+    id,
+    title,
+    price,
+    image,
+    quantity,
+    totalPrice,
+    largeDescription,
+    shortDescription,
+  } = item;
 
   /* ------ Agregar cantidad Item ------ */
 
@@ -20,7 +29,7 @@ const CartItem = ({item}) => {
         title,
         price,
         image,
-        largeDesciption,
+        largeDescription,
         shortDescription,
       })
     );

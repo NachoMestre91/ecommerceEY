@@ -1,39 +1,26 @@
-import React from 'react';
-import {Container, Row, Col} from 'reactstrap';
-import {Link} from 'react-router-dom';
-import {useSelector, useDispatch} from 'react-redux';
-import '../assets/css/Cart.css';
-import {addDoc, collection, getFirestore} from 'firebase/firestore';
-import {initializeApp} from 'firebase/app';
-import {cartActions} from '../store/Slices/cartSlice.js';
-import {firebaseConfig} from '../firebase/firebaseConfig';
-import {useNavigate} from 'react-router-dom';
+import React from "react";
+import { Container, Row, Col } from "reactstrap";
+import { Link } from "react-router-dom";
+import { useSelector, useDispatch } from "react-redux";
+import "../assets/css/Cart.css";
+import { addDoc, collection, getFirestore } from "firebase/firestore";
+import { initializeApp } from "firebase/app";
+import { cartActions } from "../store/Slices/cartSlice.js";
+import { firebaseConfig } from "../firebase/firebaseConfig";
+import { useNavigate } from "react-router-dom";
+import { createBuyer } from "../helpers/createBuyer";
 
 const Cart = () => {
   /* ------ Get Monto total y Items del carrito  ------ */
 
-  const totalAmount = useSelector(state => state.cart.totalAmount);
-  const {cartItems} = useSelector(state => state.cart);
+  const totalAmount = useSelector((state) => state.cart.totalAmount);
+  const { cartItems } = useSelector((state) => state.cart);
 
-  const {status} = useSelector(state => state.auth);
+  const { status } = useSelector((state) => state.auth);
 
   /* ------ Funcion realizar compra ------ */
 
-  // const dispatch = useDispatch();
-  // const navigate = useNavigate();
-
-  // const realizarCompra = async () => {
-  //   const db = getFirestore(initializeApp(firebaseConfig));
-
-  //   const date = new Date().toLocaleDateString();
-
-  //   const buyer = {
-  //     email: status.email,
-  //     name: status.displayName?.displayName || '',
-  //     phone: '',
-  //     date: date,
-  //     items: cartItems,
-  //   };
+  const dispatch = useDispatch();
 
   //   try {
   //     const docRef = await addDoc(collection(db, 'buyer'), buyer);
@@ -69,7 +56,7 @@ const Cart = () => {
                     </tr>
                   </thead>
                   <tbody>
-                    {cartItems.map(item => (
+                    {cartItems.map((item) => (
                       <Tr item={item} key={item.id} />
                     ))}
                   </tbody>
@@ -85,7 +72,10 @@ const Cart = () => {
                   <button className="addTOCart__btn me-4">
                     <Link to="/home">Continuar comprando</Link>
                   </button>
-                  <button className="addTOCart__btn">
+                  <button
+                    className="addTOCart__btn"
+                    onClick={() => dispatch(createBuyer())}
+                  >
                     <Link to="/checkout">Pagar</Link>
                   </button>
                 </div>
@@ -98,10 +88,9 @@ const Cart = () => {
   );
 };
 
-const Tr = props => {
-  const {id, image, title, price, stock, quantity} = props.item;
+const Tr = (props) => {
+  const { id, image, title, price, stock, quantity } = props.item;
 
-  console.log(quantity);
   const dispatch = useDispatch();
 
   const deleteItem = () => {
